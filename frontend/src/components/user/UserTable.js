@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MaterialTable from 'material-table'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -10,9 +10,15 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-function UserTable() {
+function UserTable(props) {
     const { useState } = React;
     const classes = useStyles();
+    const prodData = props.productData
+
+    useEffect = () => {
+        // PUT THE DATABASECALL
+        SOMEMETHOD()
+    }
 
     const [columns, setColumns] = useState([
         { title: 'Username', field: 'username' },
@@ -22,10 +28,12 @@ function UserTable() {
         { title: 'usertype', field: 'Usertype', lookup: { 'editor': 'editor', 'conductor': 'conductor', 'guest': 'guest' } }
     ]);
 
+    
     const [data, setData] = useState([
-        { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-        { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+        { username: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+        { username: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
     ]);
+
 
     return (
         <div className={classes.tableContainer}>
@@ -38,7 +46,7 @@ function UserTable() {
                     new Promise((resolve, reject) => {
                         setTimeout(() => {
                             setData([...data, newData]);
-
+                                ADDdATA();
                             resolve();
                         }, 1000)
                     }),
