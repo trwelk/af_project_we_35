@@ -8,6 +8,7 @@ const corsOptions ={
 }
 const WorkshopRoutes = require('./routes/workshop.routes.js')
 const EndUserRoutes = require('./routes/endUser.routes.js')
+const SuperUserRoutes = require('./routes/superUser.routes.js')
 
 
 const app = new Koa();
@@ -19,6 +20,9 @@ app.use(cors(corsOptions));
 
  app.use(EndUserRoutes.routes())
  .use(EndUserRoutes.allowedMethods());
+
+ app.use(SuperUserRoutes.routes())
+ .use(SuperUserRoutes.allowedMethods());
 
 
 app.listen(9090);
