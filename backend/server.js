@@ -1,17 +1,12 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser')
 const cors = require('@koa/cors');
-const mongoose = require('mongoose');
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useUnifiedTopology', true);
-mongoose.connect('mongodb://localhost/conferenceMgmt');
 const corsOptions ={
     origin:'http://localhost:8080', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
-const WorkshopRoutes = require('./routes/workshop.routes.js');
-const EndUserRoutes = require('./routes/endUser.routes.js');
+const WorkshopRoutes = require('./routes/workshop.routes')
 
 
 const app = new Koa();
@@ -20,9 +15,6 @@ app.use(cors(corsOptions));
 
  app.use(WorkshopRoutes.routes())
  .use(WorkshopRoutes.allowedMethods());
-
- app.use(EndUserRoutes.routes())
- .use(EndUserRoutes.allowedMethods());
 
 
 app.listen(9090);
