@@ -18,7 +18,6 @@ const router = new Router({
                 contact: user.contact,
                 name: user.name,
                 username: user.username,
-                institution: user.institution
             }, "jwtSecret")
             ctx.body = {user:user,token:token};
             ctx.response.status = 201;
