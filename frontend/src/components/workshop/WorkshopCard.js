@@ -43,14 +43,14 @@ export default function WorkshopCard(props) {
     title = "This is the new Titlle";
     description = "Computational Fluid Dynamics (CFD) has now become a common tool for modelling heat and fluid flow applications in many engineering disciplines. Obtaining accurate results through proper use of CFD requires a solid understanding of underling modelling principles with technical know-how gained through experience. The proposed workshop aims to disseminate the required basic theoretical understanding and technical know-how among researches of various disciplines. The workshop is designed to be largely with hands on sessions solving several real-life engineering problems."
     conductor = "Mr A.K Abujann"
-
+    link = "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
 
     /////
     return (
         <div className={classes.container}>
             <Paper className={classes.root} elevation={3}>
                 <div className={classes.imgContainer} >
-                    <img className={classes.image} src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" />
+                    <img className={classes.image} src={link} />
                 </div>
                 <div className={classes.contentContainer} >
                     <Typography variant="h5" gutterBottom>

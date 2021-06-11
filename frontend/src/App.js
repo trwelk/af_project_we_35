@@ -11,11 +11,11 @@ function App() {
       <Router>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={WorkshopCard} />
+          <Route exact path="/" component={ UserManagement} />
           <Route exact path="/ddss" component={WorkshopCard} />
           <Route exact path="/" component={UserManagement} />
    
-
+        <WorkshopCard />
 
 
 

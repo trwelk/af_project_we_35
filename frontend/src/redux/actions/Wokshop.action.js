@@ -22,7 +22,7 @@ export const fetchWorkshopsSuccess = (data) =>  {
 
 
 export const fetchWorkshops = (dispatch) => {
-    let isLoading = true;
+        let isLoading = true;
         dispatch(fetchWorkshopsLoading(isLoading))
         axios.get("http://localhost:9090/workshops")
             .then(response => {
