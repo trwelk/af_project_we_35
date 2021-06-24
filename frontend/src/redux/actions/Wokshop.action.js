@@ -24,7 +24,7 @@ export const fetchWorkshopsSuccess = (data) =>  {
 export const fetchWorkshops = (dispatch) => {
     let isLoading = true;
         dispatch(fetchWorkshopsLoading(isLoading))
-        axios.get("http://localhost:9090/workshops")
+        axios.get(AppConstants.REST_URL_HOST + workshopUrl)
             .then(response => {
                 console.log(response.data)
                 dispatch(fetchWorkshopsSuccess(response.data))
@@ -57,6 +57,27 @@ export const updateWorkshop = (dispatch,stateObject) => {
 export const updateWorkshopSuccess = (data) =>  {
     return {
         type: ActionTypes.UPDATE_WORKSHOP_SUCCESS,
+        payload: data
+    }
+}
+
+
+//CREATE
+
+export const createWorkshop = (data,dispatch) => {
+    const workshop = data;
+    axios.post(AppConstants.REST_URL_HOST + workshopUrl,workshop)
+        .then(response => {
+            const id = response;
+            console.log(id)
+                    dispatch(createWorkshopSuccess(response.data))
+        })
+
+}
+
+export const createWorkshopSuccess = (data) => {
+    return {
+        type: ActionTypes.CREATE_WORKSHOP_SUCCESS  ,
         payload: data
     }
 }

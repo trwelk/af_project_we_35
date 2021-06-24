@@ -12,8 +12,8 @@ export const WorkshopReducer = (state = initialState, { type, payload }) => {
             return { ...state, workshops: payload }
         case ActionTypes.WORKSHOPS_LOADING:
             return { ...state, isLoading: payload }
-        case ActionTypes.CREATE_PRODUCTS_SUCCESS:
-            return { ...state, products: [...state.products, payload] }
+        case ActionTypes.CREATE_WORKSHOP_SUCCESS:
+            return { ...state, workshops: [...state.workshops, payload] }
         case ActionTypes.REMOVE_FROM_PRODUCT:
             let products = state.products
             console.log("old prods", products, payload)
