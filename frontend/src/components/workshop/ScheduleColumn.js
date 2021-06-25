@@ -24,11 +24,10 @@ function ScheduleColumn(props) {
     const column =  ws.forEach((element,index) => {
         const itemNo = element.startTime - startTime;
         const arrayIndex = itemNo * 2
-        console.log(element )
 
-        if(date == new Date(element.date).getDate() && element.status == AppConstants.STATE_APPROVED){
+        if(date == new Date(element.date).getDate() && element.state == AppConstants.STATE_APPROVED){
             for(let start = 0 ; start < element.noOfHours * 2 ; start++){
-                blankColumn[arrayIndex + start] = <ScheduledAtom data="some"/>
+                blankColumn[arrayIndex + start] = <ScheduledAtom data={element}/>
             }
         }
        

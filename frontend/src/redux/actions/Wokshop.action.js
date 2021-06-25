@@ -55,8 +55,8 @@ export const updateWorkshop = (dispatch,stateObject) => {
         workshop.startTime = startTime
         workshop.date = new Date(2021,5,date);
         workshop.noOfHours = noOfHours
-        workshop.status = "approved"
-
+        workshop.state = AppConstants.STATE_APPROVED
+    
         axios.patch(AppConstants.REST_URL_HOST + workshopUrl,workshop)
             .then(response => {
                 dispatch(updateWorkshopSuccess({...response.data}))
@@ -64,6 +64,20 @@ export const updateWorkshop = (dispatch,stateObject) => {
             .catch(error => {
                 // console.log(error)
             }) 
+}
+
+
+export const removeWorkshopSlot = (dispatch,workshop) => {
+    let workshopObj = workshop
+    workshopObj.state = AppConstants.STATE_REQUESTED
+
+    axios.patch(AppConstants.REST_URL_HOST + workshopUrl,workshopObj)
+        .then(response => {
+            dispatch(updateWorkshopSuccess({...response.data}))
+        })
+        .catch(error => {
+            // console.log(error)
+        }) 
 }
 
 export const updateWorkshopSuccess = (data) =>  {

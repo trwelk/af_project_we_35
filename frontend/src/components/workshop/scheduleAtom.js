@@ -64,6 +64,8 @@ export default function scheduleAtom(props) {
 
     const handleChange = (e) => {
         setState({ ...state, [e.target.name]: e.target.value })
+        console.log(state)
+
     }
 
     return (
@@ -102,7 +104,7 @@ export default function scheduleAtom(props) {
                         select
                         label="Select"
                         name="workshop"
-                        value={state.workshops ? state.workshops.name : ""}
+                        value={state.workshop ? state.workshop.title : ""}
                         onChange={handleChange}
                         helperText="Please select your currency"
                         variant="outlined"
