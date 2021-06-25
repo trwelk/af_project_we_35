@@ -2,13 +2,14 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser')
 const cors = require('@koa/cors');
 const corsOptions ={
-    origin:'http://localhost:8080', 
+    origin:'http://localhost:1234', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
 const WorkshopRoutes = require('./routes/workshop.routes.js')
 const EndUserRoutes = require('./routes/endUser.routes.js')
 const workshopTagRoutes = require('./routes/workshopTags.routes')
+const newsRoutes = require('./routes/news.routes')
 
 const app = new Koa();
 app.use(bodyParser());
@@ -16,6 +17,10 @@ app.use(cors(corsOptions));
 
  app.use(WorkshopRoutes.routes())
  .use(WorkshopRoutes.allowedMethods());
+
+ app.use(newsRoutes.routes())
+ .use(newsRoutes.allowedMethods());
+
 
  app.use(EndUserRoutes.routes())
  .use(EndUserRoutes.allowedMethods());
