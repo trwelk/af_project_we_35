@@ -37,8 +37,8 @@ export default function scheduleAtom(props) {
     const dispatch = useDispatch();
     let wShops = globalState.workshop.workshops
     let workshops = []
-    wShops.forEach(Element => {
-        if(Element.state == AppConstants.STATE_REQUESTED){
+    wShops.forEach(element => {
+        if(element.state == AppConstants.STATE_REQUESTED){
             workshops.push(element)
         }   
     })

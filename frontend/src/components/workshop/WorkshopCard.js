@@ -8,12 +8,16 @@ const useStyles = makeStyles((theme) => ({
         height: "300px",
         width: "90%",
         display: "flex",
-        flexDirection: "row"
+        flexDirection: "row",
+        background:"#fff5f8",
+        justifyContent:'center',
+
     },
     container: {
         justifyContent: "center",
         display: "flex",
-        paddingTop: "20px"
+        paddingTop: "20px",
+        background:"#fff5f8"
     },
     imgContainer: {
         width: "25%",
@@ -32,6 +36,14 @@ const useStyles = makeStyles((theme) => ({
     image: {
         maxWidth: "100%",
         maxHeight: "100%"
+    },
+    bodyCover:{
+        fontSize: "16px",
+        fontFamily: "system-ui",
+        fontWeight: "300",
+        lineHeight: 1.334,
+        paddingTop:'30px',
+        paddingBottom:'30px'
     }
 
 }));
@@ -39,20 +51,19 @@ const useStyles = makeStyles((theme) => ({
 export default function WorkshopCard(props) {
     const classes = useStyles();
     let { workshop } = props
-    console.log(workshop,props)
     const flexDirection = props.index % 2 == 0 ? "row" : "row-reverse"
 
     return (
         <div className={classes.container}>
-            <Paper className={classes.root} style={{flexDirection:flexDirection}} elevation={1}>
+            <Paper className={classes.root} style={{flexDirection:flexDirection}} elevation={0}>
                 <div className={classes.imgContainer} >
-                    <img className={classes.image} src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" />
+                    <img className={classes.image} src={require('/assets/images/prodSample.jpg')} />
                 </div>
                 <div className={classes.contentContainer} >
                     <Typography variant="h5" gutterBottom>
                         {workshop.title}
                     </Typography>
-                    <Typography variant="body1" gutterBottom>
+                    <Typography className={classes.bodyCover} variant="body1" gutterBottom>
                         {workshop.description}
                     </Typography>
                     <Typography variant="overline" display="block" gutterBottom>

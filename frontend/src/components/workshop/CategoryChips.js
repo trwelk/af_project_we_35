@@ -4,7 +4,9 @@ import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
 import TagFacesIcon from '@material-ui/icons/TagFaces';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux'
 import AddWorkshopForm from './AddWorkshopForm';
+import { fetchWorkshopTags } from '../../redux/actions/WorkshopTag.action';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,23 +33,10 @@ export default function CategoryChips(props) {
     const classes = useStyles();
     const setCategory = props.setCategory
     const [chipData, setChipData] = React.useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        axios.get("http://localhost:9090/workshoptags")
-            .then(response => {
-                console.log(response)
-                setChipData(response.data.map((element,index) => {
-                    return (
-                        {
-                            ...element,
-                            color:"default"
-                        }
-                    )
-                }));
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        fetchWorkshopTags(dispatch);
     }, [])
 
     const handleClick = (chipToDelete) => () => {

@@ -6,7 +6,12 @@ import { fetchWorkshops } from '../redux/actions/Wokshop.action'
 import WorkshopCard from '../components/workshop/WorkshopCard'
 import { makeStyles } from '@material-ui/core/styles';
 import CategoryChips from '../components/workshop/CategoryChips';
-import ImageListView from '../components/views/ImageListView'
+import ImageCarousel from '../components/user/ImageCarousel';
+import ImageTileDisplay from '../components/views/util/ImageTileDisplay';
+import KeynoteCard from '../components/keynote/KeynoteCard';
+import KeynoteList from '../components/keynote/KeynoteList';
+import NewsList from '../components/news/NewsList';
+
 const useStyles = makeStyles((theme) => ({
     listContainer: {
         display: "flex",
@@ -23,6 +28,11 @@ function WorkshopDisp() {
         fetchWorkshops(dispatch);
     }, [])
 
+
+    const setCategory = (category) => {
+        fetchWorkshopForProducts(dispatch,category);
+    }
+
     const workshops = globalState.workshop.workshops
     const workShopUiList = workshops.map((workshop, index) => {
         return (
@@ -37,7 +47,10 @@ function WorkshopDisp() {
             <div className={classes.listContainer} >
                 {workShopUiList}
             </div>
-            <ImageListView/>
+            <ImageTileDisplay/>
+            <KeynoteList/>
+            <NewsList/>
+
         </div>
     );
 }

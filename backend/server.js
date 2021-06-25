@@ -10,6 +10,8 @@ const WorkshopRoutes = require('./routes/workshop.routes.js')
 const EndUserRoutes = require('./routes/endUser.routes.js')
 const workshopTagRoutes = require('./routes/workshopTags.routes')
 const newsRoutes = require('./routes/news.routes')
+const SuperUserRoutes = require('./routes/superUser.routes.js')
+
 
 const app = new Koa();
 app.use(bodyParser());
@@ -26,6 +28,9 @@ app.use(cors(corsOptions));
  .use(EndUserRoutes.allowedMethods());
  app.use(workshopTagRoutes.routes())
  .use(workshopTagRoutes.allowedMethods());
+
+ app.use(SuperUserRoutes.routes())
+ .use(SuperUserRoutes.allowedMethods());
 
 
 app.listen(9090);

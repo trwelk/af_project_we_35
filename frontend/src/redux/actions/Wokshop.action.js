@@ -38,6 +38,18 @@ export const fetchWorkshops = (dispatch) => {
             }) 
 }
 
+export const fetchWorkshopForProducts = (dispatch,category) => {
+
+    axios.get("http://localhost:9090/category/" +category.id + "/workshops")
+    .then(response => {
+        dispatch(fetchWorkshopsSuccess(response.data))
+    })
+    .catch(error => {
+        isLoading = false;
+        dispatch(fetchWorkshopsLoading(isLoading))
+    }) 
+}
+
 export const updateWorkshop = (dispatch,stateObject) => {
         const {startTime,date,workshop,noOfHours} = stateObject
         workshop.startTime = startTime

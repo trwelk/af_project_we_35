@@ -4,8 +4,7 @@
   "description": "front end of af_project",
   "main": "App.js",
   "scripts": {
-    "start": "webpack serve --open",
-    "build": "webpack"
+    "start": "parcel src/index.html --open"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   "homepage": "https://github.com/trwelk/af_project_we_35#readme",
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "parcel-bundler": "^1.12.5",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
@@ -30,13 +30,17 @@
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "assets": "^3.0.1",
     "axios": "^0.21.1",
     "material-table": "^1.69.3",
     "material-ui": "^0.20.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-material-ui-carousel": "^2.2.6",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
+    "react-slick": "^0.28.1",
+    "react-slick-carousel": "^0.14.9",
     "redux": "^4.1.0"
   }
 }
