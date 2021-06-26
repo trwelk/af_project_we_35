@@ -11,6 +11,8 @@ import Header from './components/views/Header/Header';
 import News from './pages/News';
 import Workshops from './pages/Workshops';
 import ResearchPaperTable from './components/researchPaper/ResearchPaperTable';
+import WorkshopOverview from './components/dashboard/WorkshopOverview';
+import Chart from './components/dashboard/Chart';
 function App() {
   return (
     <div className="App" >
@@ -21,7 +23,9 @@ function App() {
           <Route exact path="/ddss" component={WorkshopCard} />
           <Route exact path="/news" component={News} />
           <Route exact path="/workshops" component={Workshops} />
-   
+          <Route exact path="/test" component={WorkshopOverview} />
+          <Route exact path="/test1" component={Chart} />
+
 
           <Route exact path="/editor/workshops" component={UserManagement} />
           <Route exact path="/editor/research" component={ResearchPaperTable} />
