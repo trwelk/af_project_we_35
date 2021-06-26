@@ -10,6 +10,7 @@ import WorkshopDisp from './pages/WorkshopDisp';
 import Header from './components/views/Header/Header';
 import News from './pages/News';
 import Workshops from './pages/Workshops';
+import ResearchPaperTable from './components/researchPaper/ResearchPaperTable';
 function App() {
   return (
     <div className="App" >
@@ -23,6 +24,7 @@ function App() {
    
 
           <Route exact path="/editor/workshops" component={UserManagement} />
+          <Route exact path="/editor/research" component={ResearchPaperTable} />
 
 
 
