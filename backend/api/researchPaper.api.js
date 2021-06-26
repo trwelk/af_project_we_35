@@ -1,5 +1,6 @@
 const uuid = require('uuid');
 const researchPaperSchema = require('../models/researchPaper.model')
+const mailApi = require('../api/mail.api');
 
 
 /*Inserts a new resaerchPaper entity into the database and returns the object if successfull : else returns the error 
@@ -10,7 +11,9 @@ const researchPaperSchema = require('../models/researchPaper.model')
             id: uuid.v4(),
             paperUploader: obj.paperUploader,
             paperTopic: obj.paperTopic,
-            paperLink: obj.paperLink
+            paperLink: obj.paperLink,
+            state: obj.state,
+            email: obj.email,
         });
 
         newResearchPaper.save()
@@ -69,4 +72,17 @@ async function deleteResearchPaper(resaerchPaperId) {
    
 }
 
-module.exports = { addResearchPaper, getResearchPapersByCategory, getResearchPapers ,deleteResearchPaper };
+
+async function updateResearch(research) {
+    var filter = {id: research.id};
+    console.log(research)
+    const message = "Dear Applicant The research paper has been approved"
+    if(research.state == 'approved'){
+        mailApi.sendMail("REQUEST APPROVED",message,research.email)
+    }
+    let updatedResearch = await researchPaperSchema.findOneAndReplace(filter,research, {
+        new: true
+    });
+    return updatedResearch;
+}
+module.exports = {updateResearch, addResearchPaper, getResearchPapersByCategory, getResearchPapers ,deleteResearchPaper };
