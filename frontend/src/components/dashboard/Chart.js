@@ -15,7 +15,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     chartCoverBody: {
         background:"#00083f",
-        width:"80%"
+        width:"100%",
+        height:"100%"
+        
         
     },
 
@@ -125,6 +127,7 @@ function Chart(props) {
                   <Line
                     data={chartReservationsOfRoomType}
                     options={chartOptions2}
+                    height={400}
                   />
                   </div>
 
