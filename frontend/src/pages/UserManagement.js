@@ -6,12 +6,13 @@ import ScheduleColumn from '../components/workshop/ScheduleColumn';
 import { fetchWorkshops } from '../redux/actions/Wokshop.action'
 import { makeStyles } from '@material-ui/core/styles';
 import Heading1 from '../components/views/util/Heading1';
+import { Paper } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
   timeDivCover: {
     width: "10%",
-    background:"#1798ff2b"
+    background: "#1798ff2b"
   },
   timeDiv: {
     height: "101px",
@@ -25,6 +26,27 @@ const useStyles = makeStyles((theme) => ({
   timeCover: {
     textAlign: "right",
     marginRight: "10px"
+  },
+  headCell: {
+    width: "30%",
+    background: "#fff5f8",
+    height: "60px"
+  },
+  headCellLeft: {
+    width: "10%",
+    background: "#fff5f8",
+    height: "60px"
+  },
+  headDay: {
+    fontSize: "20px",
+    fontFamily: "monospace",
+    fontWeight: "300",
+    lineHeight: 1.334,
+    textAlign: 'center',
+  },
+  paperCoverWorkshop: {
+    width: "90%",
+    margin: 'auto'
   }
 }));
 
@@ -37,9 +59,17 @@ function UserManagement() {
     fetchWorkshops(dispatch);
   }, [])
 
-  const daysArr = [17, 18, 19,20]
+  const daysArr = [17, 18, 19, 20]
   const timeColumn = [];
+  const headRow = []
 
+  for (let i = 0; i < daysArr.length; i++) {
+    headRow.push(<div className={classes.headCell}>
+      <h3 className={classes.headDay}>
+        {daysArr[i]}
+      </h3>
+    </div>)
+  }
   for (let i = 0; i < 16; i++) {
     if (i % 2 == 0)
       timeColumn.push(<div className={classes.timeDiv}>
@@ -64,14 +94,21 @@ function UserManagement() {
   })
   return (
     <div>
-      <Heading1 data={{heading:"Workshop Details"}}/>
-      <div style={{ display: "flex" }}>
-        <div className={classes.timeDivCover}>
-          {timeColumn}
+      <Heading1 data={{ heading: "Workshop Details" }} />
+      <Paper className={classes.paperCoverWorkshop} elevation={3}>
+        <div style={{ display: "flex" }}>
+          <div className={classes.headCellLeft}></div>
+          {headRow}
         </div>
-        {cols}
-      </div>
+        <div style={{ display: "flex" }}>
+          <div className={classes.timeDivCover}>
+            {timeColumn}
+          </div>
+          {cols}
+        </div>
+      </Paper>
     </div>
+
   );
 }
 
