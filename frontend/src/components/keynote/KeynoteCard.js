@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: theme.spacing(8),
         marginBottom: theme.spacing(4),
+        
     },
     paperCover: {
         background: "white",
@@ -19,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         display:'flex',
         flexDirection:'column',
-        alignItems:'center'
+        alignItems:'center',
+        background:"#fff5f8"
+
     },
     keyHead: {
         height: "40%",
