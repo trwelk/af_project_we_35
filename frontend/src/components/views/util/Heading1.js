@@ -10,7 +10,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        background: "#80808017"
+        background: "#80808017",
+        zIndex:1
+
     },
     headh2: {
         color: "rgba(0, 0, 0, 0.87)",
@@ -19,18 +21,23 @@ const useStyles = makeStyles({
         fontWeight: 700,
         lineHeight: 1.235,
         textTransform: "uppercase",
+        zIndex:1
+
     },
     headSpan: {
         width: "55px",
         height: "4px",
         margin: "8px auto 0",
         display: "block",
-        backgroundColor: " #ff3366"
+        backgroundColor: " #ff3366",
+        zIndex:1
+
     },
     head1container: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems:'center'
+        alignItems:'center',
+        zIndex:1
     }
 });
 
