@@ -15,6 +15,12 @@ router.get('/', async ctx => {
     ctx.body = researchPaper
 });
 
+router.put('/', async ctx => {
+    let research = ctx.request.body;
+    research = await researchPaperApi.updateResearch(research);
+    ctx.response.status = 201;
+    ctx.body = research;
+   });
 
 //call this to add a new researchPaper 
 router.post('/', async ctx => {
