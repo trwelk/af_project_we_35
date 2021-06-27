@@ -68,6 +68,17 @@ async function getUser(username) {
      return user;
 }
 
+async function getUsers() {
+    let users = await User.find(function(err,response) {
+        if(err)
+            console.log(err);
+        else
+            return response;
+    })
+
+     return [...users.values()];
+}
+
 async function updateUser(user) {
     var filter = {username: user.username, password: user.password};
     var oldUser = await this.getUser(user.username);
@@ -78,8 +89,9 @@ async function updateUser(user) {
     return updatedUser;
 }
 
-async function deleteUser(username) {
-    let deleteDetails = await User.deleteOne({ username: username }, function(err, response){
+async function deleteUser(userId) {
+    console.log(userId);
+    let deleteDetails = await User.deleteOne({ id: userId }, function(err, response){
         if(err)
             console.log('Unable to delete user');
         else{
@@ -89,4 +101,4 @@ async function deleteUser(username) {
      return deleteDetails;
 }
 
-module.exports = {userSignUp,userLogin,getUser,updateUser,deleteUser};
+module.exports = {userSignUp,userLogin,getUser,getUsers,updateUser,deleteUser};

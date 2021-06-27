@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
-
 import NavBar from './components/views/NavBar';
 import WorkshopCard from './components/workshop/WorkshopCard';
 import UserManagement from './pages/UserManagement';
+import Users from './pages/Users';
+import Login from './pages/Login';
 import WorkshopDisp from './pages/WorkshopDisp';
 import Header from './components/views/Header/Header';
 import News from './pages/News';
@@ -24,13 +25,8 @@ function App() {
           <Route exact path="/workshops" component={Workshops} />
           <Route exact path="/test" component={WorkshopOverview} />
           <Route exact path="/test1" component={Chart} />
-
-
+          <Route exact path="/users" component={Users} />
           <Route exact path="/editor/workshops" component={UserManagement} />
-
-
-
-
         </Switch>
       </Router>
     </div>
