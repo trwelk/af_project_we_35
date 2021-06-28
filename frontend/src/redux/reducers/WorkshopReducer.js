@@ -16,8 +16,6 @@ export const WorkshopReducer = (state = initialState, { type, payload }) => {
             return { ...state, workshops: [...state.workshops, payload] }
         case ActionTypes.REMOVE_FROM_PRODUCT:
             let products = state.products
-            console.log("old prods", products, payload)
-
             let newProducts = products.filter(item => item.id != payload.id)
             console.log("new prods", newProducts)
             return { ...state, cartItems: newProducts }
@@ -26,6 +24,9 @@ export const WorkshopReducer = (state = initialState, { type, payload }) => {
             let newWorkshops = oldWorkshops.filter(item => item.id != payload.id)
             newWorkshops.push(payload)
             return { ...state, workshops: newWorkshops }
+        case ActionTypes.DELETE_WORKSHOPS_SUCCESS:
+            let remainingWorkshops = state.workshops.filter(item => item.id != payload)
+            return { ...state, workshops: remainingWorkshops }
         default:
             return state;
     }

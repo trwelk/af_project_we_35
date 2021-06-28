@@ -5,6 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import { IconButton } from '@material-ui/core'
 import {removeWorkshopSlot} from '../../redux/actions/Wokshop.action'
+
+//********************************************Styling************************************************************* */
+
 const useStyles = makeStyles((theme) => ({
     root: {
         width: "100%",
@@ -41,15 +44,25 @@ const useStyles = makeStyles((theme) => ({
     }
 
 }));
+
 function ScheduledAtom(props) {
 
     const dispatch = useDispatch();
     const classes = useStyles();
     const data = props.data
 
+    //*********************************************Event Handlers************************************************************* */
+
     const handleRemoveWorkshop = (e) => {
+        data.noOfHours = 0
+        data.date = null
+        data.startTime = null
+
         removeWorkshopSlot(dispatch,data)
     }
+
+    //*********************************************Rendering elements************************************************************* */
+
     return (
         <div className={classes.root}>
             <Paper className={classes.Paper} variant="outlined" >
