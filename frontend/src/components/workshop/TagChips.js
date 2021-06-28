@@ -6,7 +6,8 @@ import TagFacesIcon from '@material-ui/icons/TagFaces';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import AddWorkshopForm from './AddWorkshopForm';
-import { fetchWorkshopTags } from '../../redux/actions/WorkshopTag.action';
+import { fetchWorkshopTags,fetchWorkshopTagSuccess } from '../../redux/actions/WorkshopTag.action';
+import { fetchWorkshopForTags, } from '../../redux/actions/Wokshop.action';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,11 +30,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function CategoryChips(props) {
+export default function TagChips(props) {
     const classes = useStyles();
     const setCategory = props.setCategory
     const [chipData, setChipData] = React.useState([]);
     const dispatch = useDispatch();
+    const globalState = useSelector((state) => state);
+    const workshopTags = globalState.workshopTag.workshopTags
+    // setChipData(workshopTags);
 
     useEffect(() => {
         fetchWorkshopTags(dispatch);
@@ -42,7 +46,7 @@ export default function CategoryChips(props) {
     const handleClick = (chipToDelete) => () => {
         // setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
         let newChipData = [];
-        chipData.forEach((item, index) => {
+        workshopTags.forEach((item, index) => {
             let newChip = { ...item, color: "default" };
             if (item.id == chipToDelete.id) {
                 newChip.color = "primary";
@@ -50,14 +54,14 @@ export default function CategoryChips(props) {
             }
             newChipData.push(newChip)
         })
-        setChipData(newChipData)
-        setCategory(chipToDelete)
+        dispatch(fetchWorkshopTagSuccess(newChipData))
+        fetchWorkshopForTags(dispatch,chipToDelete)
     };
 
     return (
         <Paper component="ul" className={classes.root}>
             <div className={classes.chipContainer}>
-            {chipData.map((data) => {
+            {workshopTags.map((data) => {
                 return (
                     <li key={data.key}>
                         <Chip

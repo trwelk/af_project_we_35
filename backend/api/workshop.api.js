@@ -14,7 +14,8 @@ var workshopSchema = mongoose.Schema({
     noOfHours:Number,
     approved:Boolean,
     status:String,
-    state:String
+    state:String,
+    tags:Array
 
 });
 
@@ -29,7 +30,9 @@ const addWorkshop =  async obj => {
         date: obj.date,
         startTime: obj.startTime,
         noOfHours: obj.noOfHours,
-        state:"requested"
+        state:"requested",
+        tags:obj.tags
+
     });
 
     let savedWorkshop = await newWorkshop.save();
@@ -63,6 +66,20 @@ async function getWorkshop(workshopId) {
      return [workshop];
 }
 
+async function getWorkshopsByCategory(tag) {
+    const query = { tags: tag }
+    return new Promise((resolve, reject) => {
+        Workshop.find(query,function(err, response){
+            if(err)
+                reject(err)
+            else{
+                resolve(response)
+            }
+         });
+    })
+
+}
+
 async function deleteWorkshop(WorkshopId) {
     var query = { id: WorkshopId };
     let workshop = await Workshop.deleteOne(query,function(err, obj) {
@@ -83,4 +100,4 @@ async function updateWorkshop(workshop) {
      return workshop;
 }
 
-module.exports = {addWorkshop,getWorkshops,getWorkshop,updateWorkshop,deleteWorkshop};
+module.exports = {getWorkshopsByCategory,addWorkshop,getWorkshops,getWorkshop,updateWorkshop,deleteWorkshop};

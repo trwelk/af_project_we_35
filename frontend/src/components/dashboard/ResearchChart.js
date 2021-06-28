@@ -8,7 +8,7 @@ import {
     CardBody,
 
 } from "reactstrap";
-import {fetchWorkshops} from '../../redux/actions/Wokshop.action'
+import {fetchResearch} from '../../redux/actions/research.action'
 import { AppConstants } from '../../redux/constants/constants';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -23,19 +23,19 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-function Chart(props) {
+function ResearchChart(props) {
     const dispatch = useDispatch();
     const globalState = useSelector((state) => state);
-    const workshops = globalState.workshop.workshops
+    const researchPapers = globalState.research.researchPapers
     const classes = useStyles();
 
     useEffect(() => {
-      fetchWorkshops(dispatch);
+        fetchResearch(dispatch);
     },[])
 
-    const declined = workshops ? workshops.filter(res => res.state == AppConstants.STATE_DECLINED).length : null;
-    const aproved = workshops ? workshops.filter(res => res.state == AppConstants.STATE_APPROVED).length : null;
-    const requested = workshops ? workshops.filter(res => res.state == AppConstants.STATE_REQUESTED).length : null;
+    const declined = researchPapers ? researchPapers.filter(res => res.state == AppConstants.STATE_DECLINED).length : null;
+    const aproved = researchPapers ? researchPapers.filter(res => res.state == AppConstants.STATE_APPROVED).length : null;
+    const requested = researchPapers ? researchPapers.filter(res => res.state == AppConstants.STATE_REQUESTED).length : null;
 
 
     let chartOptions2 = {
@@ -100,7 +100,7 @@ function Chart(props) {
             labels: ["Requested", "Approved", "Declined"],
             datasets: [
               {
-                label: "Workshops",
+                label: "Research Papers",
                 fill: true,
                 backgroundColor: gradientStroke,
                 borderColor: "#1f8ef1",
@@ -139,4 +139,4 @@ function Chart(props) {
 
 
 
-export default Chart;
+export default ResearchChart;

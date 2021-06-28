@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+//*********************************************Styling************************************************************* */
+
 const useStyles = makeStyles((theme) => ({
     root: {
         height: "300px",
@@ -52,6 +54,8 @@ export default function WorkshopCard(props) {
     const classes = useStyles();
     let { workshop } = props
     const flexDirection = props.index % 2 == 0 ? "row" : "row-reverse"
+
+    //*********************************************Rendering elements************************************************************* */
 
     return (
         <div className={classes.container}>

@@ -37,3 +37,4 @@ export const fetchWorkshopTags = (dispatch) => {
                 dispatch(fetchWorkshopTagsLoading(isLoading))
             }) 
 }
+
