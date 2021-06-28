@@ -1,39 +1,37 @@
 import React, { useEffect } from 'react';
 import MaterialTable from 'material-table'
 import { makeStyles } from '@material-ui/core/styles';
+import { fetchSuperUsers, updateSuperUser, createSuperUser, deleteSuperUser } from '../../redux/actions/SuperUser.action'
+import { useDispatch, useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
     tableContainer: {
         width: "84%",
         margin: "auto",
-        marginTop: "33px"
+        marginTop: "33px",
     }
-  }));
+}));
 
-function UserTable(props) {
+function UserTable() {
     const { useState } = React;
     const classes = useStyles();
-    const prodData = props.productData
+    const dispatch = useDispatch();
+    const globalState = useSelector((state) => state);
 
-    useEffect = () => {
-        // PUT THE DATABASECALL
-        SOMEMETHOD()
-    }
+    useEffect(() => {
+        fetchSuperUsers(dispatch);
+    }, [])
 
+    //Defining columns for table
     const [columns, setColumns] = useState([
         { title: 'Username', field: 'username' },
+        { title: 'Name', field: 'name' },
         { title: 'Email', field: 'email' },
-        { title: 'Phone', field: 'phone', type: 'numeric' },
-        { title: 'Institution', field: 'Institution' },
-        { title: 'usertype', field: 'Usertype', lookup: { 'editor': 'editor', 'conductor': 'conductor', 'guest': 'guest' } }
+        { title: 'Phone', field: 'contact', type: 'numeric' },
+        { title: 'User Type', field: 'type', lookup: { 'admin': 'Admin','editor': 'Editor', 'reviewer': 'Reviewer'} }
     ]);
 
-    
-    const [data, setData] = useState([
-        { username: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-        { username: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-    ]);
-
+    const data = globalState.superuser.superUsers;
 
     return (
         <div className={classes.tableContainer}>
@@ -45,38 +43,36 @@ function UserTable(props) {
                 onRowAdd: newData =>
                     new Promise((resolve, reject) => {
                         setTimeout(() => {
-                            setData([...data, newData]);
-                                ADDdATA();
+                            createSuperUser(dispatch, newData);
                             resolve();
                         }, 1000)
                     }),
                 onRowUpdate: (newData, oldData) =>
                     new Promise((resolve, reject) => {
                         setTimeout(() => {
-                            const dataUpdate = [...data];
-                            const index = oldData.tableData.id;
-                            dataUpdate[index] = newData;
-                            setData([...dataUpdate]);
-
+                            // const dataUpdate = [...data];
+                            // const index = oldData.tableData.id;
+                            // dataUpdate[index] = newData;
+                            updateSuperUser(dispatch,newData);
                             resolve();
                         }, 1000)
                     }),
                 onRowDelete: oldData =>
                     new Promise((resolve, reject) => {
                         setTimeout(() => {
-                            const dataDelete = [...data];
-                            const index = oldData.tableData.id;
-                            dataDelete.splice(index, 1);
-                            setData([...dataDelete]);
-
+                            deleteSuperUser(dispatch,oldData);
                             resolve()
                         }, 1000)
                     }),
             }}
             options={{
                 headerStyle: {
-                  backgroundColor: '#01579b',
+                  backgroundColor: '#FF6600',
                   color: '#FFF'
+                },
+                rowStyle: {
+                    backgroundColor: '#EEE',
+                    color: '#000' 
                 }
               }}
         />

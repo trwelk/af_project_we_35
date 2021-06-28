@@ -39,6 +39,11 @@ const router = new Router({
     ctx.body = await SuperUserApi.getUser(username);
    });
 
+   router.get('/', async ctx => {
+    const username = ctx.params.username;
+    ctx.body = await SuperUserApi.getUsers();
+   });
+
    router.put('/', async ctx => {
     let user = ctx.request.body;
     user = await SuperUserApi.updateUser(user);
@@ -46,9 +51,9 @@ const router = new Router({
     ctx.body = user;
    });
 
-   router.delete('/', async ctx => {
-    let user = ctx.request.body;
-    ctx.body = await SuperUserApi.deleteUser(user.username);
+   router.delete('/:id', async ctx => {
+    let userid = ctx.params.id
+    ctx.body = await SuperUserApi.deleteUser(userid);
 })
 
 module.exports = router;
