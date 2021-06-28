@@ -124,7 +124,7 @@ function Chart(props) {
             <Card >
                 <CardBody className={classes.chartCoverBody}>
                 <div className="chart-area">
-                  <Line
+                  <Bar
                     data={chartReservationsOfRoomType}
                     options={chartOptions2}
                     height={400}

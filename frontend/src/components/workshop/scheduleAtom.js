@@ -10,11 +10,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import axios from 'axios'
-import {updateWorkshop} from '../../redux/actions/Wokshop.action'
-import {AppConstants} from '../../redux/constants/constants'
+import { updateWorkshop } from '../../redux/actions/Wokshop.action'
+import { AppConstants } from '../../redux/constants/constants'
 
+//*********************************************Styling************************************************* */
 const useStyles = makeStyles((theme) => ({
     dialog: {
         height: "600px",
@@ -35,19 +34,21 @@ const useStyles = makeStyles((theme) => ({
 export default function scheduleAtom(props) {
     const globalState = useSelector((state) => state);
     const dispatch = useDispatch();
-    let wShops = globalState.workshop.workshops
-    let workshops = []
-    wShops.forEach(element => {
-        if(element.state == AppConstants.STATE_REQUESTED){
-            workshops.push(element)
-        }   
-    })
     const { startTime, date } = props
-    // const [workshops, setWorkshops] = React.useState(globalState.workshop.workshops);
     const [open, setOpen] = React.useState(false);
-    const [state, setState] = React.useState({ startTime:  startTime , date: date, workshop: {}, noOfHours: 0 });
+    const [state, setState] = React.useState({ startTime: startTime, date: date, workshop: {}, noOfHours: 0 });
     const classes = useStyles();
 
+    let wShops = globalState.workshop.workshops
+    let workshops = []
+    
+    wShops.forEach(element => {
+        if (element.state == AppConstants.STATE_REQUESTED) {
+            workshops.push(element)
+        }
+    })
+   
+//*********************************************Event Handlers************************************************************* */
 
     // Event handlers
     const handleClickOpen = () => {
@@ -59,7 +60,12 @@ export default function scheduleAtom(props) {
     };
 
     const handleSubmit = () => {
-        updateWorkshop(dispatch,state)
+        let workshop  = state.workshop
+        workshop.startTime = state.startTime
+        workshop.date = new Date(2021,5,date);
+        workshop.noOfHours = state.noOfHours
+        workshop.state = AppConstants.STATE_APPROVED
+        updateWorkshop(dispatch, workshop)
     };
 
     const handleChange = (e) => {
@@ -67,6 +73,9 @@ export default function scheduleAtom(props) {
         console.log(state)
 
     }
+
+//*********************************************Rendering elements************************************************************* */
+
 
     return (
         <div>
@@ -89,7 +98,7 @@ export default function scheduleAtom(props) {
                         value={startTime}
                         className={classes.field}
                     />
-                     <TextField
+                    <TextField
                         autoFocus
                         margin="dense"
                         name="noOfHours"

@@ -38,9 +38,9 @@ export const fetchWorkshops = (dispatch) => {
             }) 
 }
 
-export const fetchWorkshopForProducts = (dispatch,category) => {
-
-    axios.get("http://localhost:9090/category/" +category.id + "/workshops")
+export const fetchWorkshopForTags = (dispatch,category) => {
+    console.log(category)
+    axios.get("http://localhost:9090/workshoptags/" +category.id + "/workshops")
     .then(response => {
         dispatch(fetchWorkshopsSuccess(response.data))
     })
@@ -50,19 +50,14 @@ export const fetchWorkshopForProducts = (dispatch,category) => {
     }) 
 }
 
-export const updateWorkshop = (dispatch,stateObject) => {
-        const {startTime,date,workshop,noOfHours} = stateObject
-        workshop.startTime = startTime
-        workshop.date = new Date(2021,5,date);
-        workshop.noOfHours = noOfHours
-        workshop.state = AppConstants.STATE_APPROVED
-    
+export const updateWorkshop = (dispatch,workshop) => {
+        console.log(workshop)
         axios.patch(AppConstants.REST_URL_HOST + workshopUrl,workshop)
             .then(response => {
                 dispatch(updateWorkshopSuccess({...response.data}))
             })
             .catch(error => {
-                // console.log(error)
+                console.log(error)
             }) 
 }
 
@@ -106,4 +101,26 @@ export const createWorkshopSuccess = (data) => {
         type: ActionTypes.CREATE_WORKSHOP_SUCCESS  ,
         payload: data
     }
+}
+
+
+
+export const deleteWorkshopsSuccess = (data) =>  {
+    return {
+        type: ActionTypes.DELETE_WORKSHOPS_SUCCESS,
+        payload: data
+    }
+}
+
+
+export const deleteWorkshop = (dispatch,workshopId) => {
+    console.log(workshopId)
+        axios.delete(AppConstants.REST_URL_HOST + workshopUrl + '/' + workshopId)
+            .then(response => {
+                console.log(response.data)
+                dispatch(deleteWorkshopsSuccess(workshopId))
+            })
+            .catch(error => {
+                console.log(error)
+            }) 
 }

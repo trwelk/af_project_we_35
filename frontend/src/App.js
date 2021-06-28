@@ -14,12 +14,12 @@ import WorkshopOverview from './components/dashboard/WorkshopOverview';
 import Chart from './components/dashboard/Chart';
 import Dashboard from './pages/Dashboard';
 import NavBar from './components/views/util/NavBar';
+import WorkshopAdminTable from './components/workshop/WorkshopAdminTable';
 function App() {
   return (
     <div className="App" >
       <Router>
 
-        <NavBar/>
         <Switch>
 
           <Route exact path="/" component={LandingPage} />
@@ -33,6 +33,7 @@ function App() {
           <Route exact path="/editor/workshops" component={WorkshopManagement} />
           <Route exact path="/editor/research" component={ResearchPaperTable} />
           <Route exact path="/editor/dashboard" component={Dashboard} />
+          <Route exact path="/editor/workshopAdmin" component={WorkshopAdminTable} />
 
 
 

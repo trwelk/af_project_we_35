@@ -41,9 +41,9 @@ router.patch('/', async ctx => {
 });
 
 //Used to delete an workshop
-router.delete('/', async ctx => {
-    let workshop = ctx.request.body;
-    ctx.body = await workshopApi.deleteworkshop(workshop.id);
+router.delete('/:id', async ctx => {
+    let workshopId = ctx.params.id;
+    ctx.body = await workshopApi.deleteWorkshop(workshopId);
 })
 
 

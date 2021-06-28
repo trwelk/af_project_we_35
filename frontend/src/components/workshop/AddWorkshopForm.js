@@ -27,13 +27,16 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         width:"-webkit-fill-available"
+    },
+    buttonIcon:{
+        backgroundColor:"rgb(35, 47, 62)"
     }
 }));
 
 
 export default function AddWorkshopForm() {
     const [open, setOpen] = React.useState(false);
-    const [state, setState] = React.useState({ name: "", title: "", description: "", conductor: "" ,date:null});
+    const [state, setState] = React.useState({ name: "", title: "", description: "", conductor: "" });
     const [selectedTags, setSelectedTags] = React.useState([]);
     const dispatch = useDispatch();
     const classes = useStyles();
@@ -83,7 +86,7 @@ export default function AddWorkshopForm() {
                 startIcon={<ShoppingCartIcon />}
                 onClick={handleClickOpen}
             >
-                Add Product
+                Add workshop
         </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Products</DialogTitle>
@@ -117,16 +120,6 @@ export default function AddWorkshopForm() {
                         name="conductor"
                         label="conductor"
                         type="text"
-                        fullWidth
-                        onChange={handleChange}
-                        className={classes.field}
-                    />
-                     <TextField
-                        autoFocus
-                        margin="dense"
-                        name="date"
-                        label="Date"
-                        type="date"
                         fullWidth
                         onChange={handleChange}
                         className={classes.field}
