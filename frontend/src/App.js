@@ -39,7 +39,7 @@ function App() {
           <Route exact path="/editor/research" component={ResearchPaperTable} />
           <Route exact path="/editor/dashboard" component={Dashboard} />
           <Route exact path="/editor/workshopAdmin" component={WorkshopAdminTable} />
-
+          <Route exact path="/editor/conference" component={ConferenceAdmin} />
           <Route exact path="/editor/NewsTable" component={NewsTable} />
           <Route exact path="/login" component={Login} />
         </Switch>
