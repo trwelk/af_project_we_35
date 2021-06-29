@@ -14,12 +14,12 @@ import ResearchPaperTable from './components/researchPaper/ResearchPaperTable';
 import WorkshopOverview from './components/dashboard/WorkshopOverview';
 import Chart from './components/dashboard/Chart';
 import Dashboard from './pages/Dashboard';
-import NavBar from './components/views/util/NavBar';
 import WorkshopAdminTable from './components/workshop/WorkshopAdminTable';
 import NewsTable from './components/news/NewsTable';
 import KeynoteTable from './components/keynote/KeynoteTable';
 import ContactUs from './pages/ContactUs';
 import CallForPapers from './pages/CallForPapers';
+import ConferenceAdmin from './pages/ConferenceAdmin';
 
 function App() {
   return (
