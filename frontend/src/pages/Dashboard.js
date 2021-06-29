@@ -2,6 +2,7 @@ import React from 'react';
 import Chart from '../components/dashboard/Chart';
 import { makeStyles } from '@material-ui/core/styles';
 import ResearchChart from '../components/dashboard/ResearchChart';
+import AdminNavbar from '../components/views/AdminNavBar';
 
 const useStyles = makeStyles((theme) => ({
     chartCover:{
@@ -19,6 +20,9 @@ function Dashboard() {
     const classes = useStyles();
 
     return (
+        <div>
+            <AdminNavbar/>
+        <div style={{ padding: "20px",marginTop:"100px" }}>
         <div className={classes.chartContainer}>
             <div className={classes.chartCover}>
                 <Chart/>
@@ -27,6 +31,9 @@ function Dashboard() {
                 <ResearchChart/>
             </div>
         </div>
+        </div>
+        </div>
+
     );
 }
 
