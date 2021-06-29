@@ -29,20 +29,22 @@ async function userSignUp (obj) {
     return savedUser;
 }
 
-async function userLogin(userEmail,userPassword) {
-    let user = await User.findOne({ email: userEmail, password: userPassword }, function(err, response){
-        if(err)
+async function userLogin(userName,userPassword) {
+    let user = await User.findOne({ username: userName, password: userPassword }, function(err, response){
+        if(err){
             console.log("Invalid User Details");
+            return false;
+        }
         else{
             return response
         }
      });
 
-     let res = {
+    let res = {
         "logged": false
     }
 
-     if(typeof(user) != "undefined"){
+     if(user){
          res = {
             "id": user.id,
             "email": user.email,

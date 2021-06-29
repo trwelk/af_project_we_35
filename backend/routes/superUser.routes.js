@@ -8,9 +8,9 @@ const router = new Router({
    //Used for a user to login. The users details along with a json web token is also sent back for authentication
    router.post('/login',async ctx => {
     let user = ctx.request.body;
-    user = await SuperUserApi.userLogin(user.email, user.password);
+    user = await SuperUserApi.userLogin(user.username, user.password);
     let token = {}
-    if(user){
+    if(user.logged){
              token = jsonwebtoken.sign({
                 id: user.id,
                 email: user.email,
@@ -19,11 +19,12 @@ const router = new Router({
                 name: user.name,
                 username: user.username,
             }, "jwtSecret")
-            ctx.body = {user:user,token:token};
+            ctx.body = {token:token, auth: true};
             ctx.response.status = 201;
         }
         else{
-            ctx.response.body = "AUTHERROR";
+            ctx.body = {token:null, auth: false};
+            ctx.response.status = 201;
         }
    });
    //Used for a user to sign up

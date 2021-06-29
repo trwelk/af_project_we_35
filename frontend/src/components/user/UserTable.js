@@ -67,7 +67,7 @@ function UserTable() {
             }}
             options={{
                 headerStyle: {
-                  backgroundColor: '#FF6600',
+                  backgroundColor: '#6c7a89',
                   color: '#FFF'
                 },
                 rowStyle: {
