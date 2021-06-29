@@ -12,6 +12,7 @@ const workshopTagRoutes = require('./routes/workshopTags.routes')
 const newsRoutes = require('./routes/news.routes')
 const SuperUserRoutes = require('./routes/superUser.routes.js')
 const researchPaperRoutes = require('./routes/researchPaper.routes')
+const conferenceRoutes = require('./routes/conference.routes')
 
 
 const app = new Koa();
@@ -20,6 +21,9 @@ app.use(cors(corsOptions));
 
  app.use(WorkshopRoutes.routes())
  .use(WorkshopRoutes.allowedMethods());
+
+ app.use(conferenceRoutes.routes())
+.use(conferenceRoutes.allowedMethods());
 
  app.use(newsRoutes.routes())
  .use(newsRoutes.allowedMethods());
