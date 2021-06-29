@@ -4,13 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 import { makeStyles } from '@material-ui/core/styles';
-import WorkshopDescriptionPane from './util/NewsDescriptionPane';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
 import { Redirect } from "react-router-dom";
 import AddWorkshopForm from './AddNewsForm';
-import {fetchNews,updateNews,deleteNews} from '../../redux/actions/news.action'
-import NewsDescriptionPane from './util/NewsDescriptionPane';
+import {fetchNews,updateNews,deleteNews,createNews} from '../../redux/actions/news.action'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,10 +55,8 @@ function NewsTable(props) {
 }, [])
 const dispatch = useDispatch();
 const globalState = useSelector((state) => state);
-const news = globalState.news.newsDe
-
-  const addButton =  <AddWorkshopForm/>
-
+console.log(globalState)
+const news = globalState.news.news
 
 
   const data = news ? (news.map(info => ({...info}))) : (null)
@@ -68,17 +64,14 @@ const news = globalState.news.newsDe
       if(news){
     return (
       <div style={{padding: "20px"}}>
-          <div className={classes.buttonCover}>
-              <AddWorkshopForm/>
-          </div>
+
         <MaterialTable style={{padding:"0px",boxShadow: "0 0 2px 2px black"}}
-        title={addButton}
+        title={"News"}
           columns={[
-            { title: 'Title', field: 'title' },
-            { title: 'conductor', field: 'conductor'},
-            { title: 'Number of Hours', field: 'noOfHours',type:'numeric'},
-            { title: 'State', field: 'state',
-                lookup: { requested: 'requested', approved: 'approved',declined:'declined'}},
+            { title: 'Title', field: 'name' },
+            { title: 'Description', field: 'description'},
+            { title: 'Image Link', field: 'image',},
+            { title: 'Date', field: 'date'},
             { title: 'ID', field: 'id'},
           ]}
           options={{
@@ -94,29 +87,16 @@ const news = globalState.news.newsDe
         boxShadow: "0 10px 5px -2px #888"
         }
       }}
-      components={{
-        Toolbar: props => (
-          <div>
-          </div>
-        ),
-      }}
           data={data}
-          detailPanel={[
-            {
-              icon:'D',
-              tooltip: 'Show Description',
-              render: rowData => {
-                return (
-                  <div> 
-                      <NewsDescriptionPane news={rowData} description={rowData.description}/>
-                  </div>
-
-                    
-                )
-              },
-            },
-          ]}
           editable={{
+            onRowAdd: newData =>
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    /* setData([...data, newData]); */
+                    createNews(newData,dispatch)
+                    resolve();
+                }, 1000);
+            }),
             onRowUpdate: (newData, oldData) =>
                   new Promise((resolve, reject) => {
                   
