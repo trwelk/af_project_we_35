@@ -15,6 +15,8 @@ import Chart from './components/dashboard/Chart';
 import Dashboard from './pages/Dashboard';
 import NavBar from './components/views/util/NavBar';
 import WorkshopAdminTable from './components/workshop/WorkshopAdminTable';
+// import NewsTable from './components/news/NewsTable';
+
 function App() {
   return (
     <div className="App" >
@@ -31,6 +33,7 @@ function App() {
           <Route exact path="/editor/research" component={ResearchPaperTable} />
           <Route exact path="/editor/dashboard" component={Dashboard} />
           <Route exact path="/editor/workshopAdmin" component={WorkshopAdminTable} />
+          {/* <Route exact path="/editor/NewsTable" component={NewsTable} /> */}
         </Switch>
       </Router>
     </div>
