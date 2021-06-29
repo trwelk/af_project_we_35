@@ -16,7 +16,6 @@ import Chart from './components/dashboard/Chart';
 import Dashboard from './pages/Dashboard';
 import WorkshopAdminTable from './components/workshop/WorkshopAdminTable';
 import NewsTable from './components/news/NewsTable';
-import KeynoteTable from './components/keynote/KeynoteTable';
 import ContactUs from './pages/ContactUs';
 import CallForPapers from './pages/CallForPapers';
 import ConferenceAdmin from './pages/ConferenceAdmin';
