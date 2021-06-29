@@ -12,7 +12,7 @@ const mailApi = require('../api/mail.api');
             paperUploader: obj.paperUploader,
             paperTopic: obj.paperTopic,
             paperLink: obj.paperLink,
-            state: obj.state,
+            state: "requested",
             email: obj.email,
         });
 

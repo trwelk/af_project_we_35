@@ -13,7 +13,6 @@ var workshopSchema = mongoose.Schema({
     startTime:Number,
     noOfHours:Number,
     approved:Boolean,
-    status:String,
     state:String,
     tags:Array,
     workshopUrl:String
@@ -28,6 +27,7 @@ const addWorkshop =  async obj => {
         title: obj.title,
         description: obj.description,
         conductor: obj.conductor,
+        link: obj.link,
         date: obj.date,
         startTime: obj.startTime,
         noOfHours: obj.noOfHours,
