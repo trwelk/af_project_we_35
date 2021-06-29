@@ -3,6 +3,7 @@ import { ActionTypes } from "../constants/action-types";
 const initialState = {
     researchPapers: [],
     isLoading: false,
+    researchLink:"",
     error: null
 }
 export const ResearchReducer = (state = initialState, { type, payload }) => {
@@ -17,6 +18,8 @@ export const ResearchReducer = (state = initialState, { type, payload }) => {
             let newResearch = oldResearch.filter(item => item.id != payload.id)
             newResearch.push(payload)
             return { ...state, researchPapers: newResearch }
+        case ActionTypes.SET_RESEARCH_LINK:
+            return{...state,researchLink:payload}
         default:
             return state;
     }

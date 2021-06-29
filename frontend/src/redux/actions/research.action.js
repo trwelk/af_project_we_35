@@ -14,6 +14,12 @@ export const fetchResearchSuccess = (data) =>  {
     }
 }
 
+export const updateResearchLink = (data) =>  {
+    return {
+        type: ActionTypes.SET_RESEARCH_LINK,
+        payload: data
+    }
+}
 
 export const fetchResearch = (dispatch) => {
         axios.get(AppConstants.REST_URL_HOST + researchURL)

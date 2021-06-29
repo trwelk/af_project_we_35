@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchResearch } from '../../redux/actions/research.action';
 import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import { AppConstants } from '../../redux/constants/constants';
 import { updateResearch } from '../../redux/actions/research.action'
+import { IconButton } from '@material-ui/core';
+import AdminNavbar from '../views/AdminNavBar';
 
 
 
@@ -67,6 +69,27 @@ function ResearchPaperTable(props) {
             title={"Research Papers"}
             columns={columns}
             data={researchPapers}
+            detailPanel={[
+            {
+              icon:'download',
+              tooltip: 'Download',
+              render: rowData => {
+                return (
+                  <div> 
+
+                    <a 
+                    href={rowData.paperLink} 
+                    target="_blank"download>
+                                              <IconButton>
+                          <CloudDownloadIcon/>
+                      </IconButton>download</a>
+                  </div>
+
+                    
+                )
+              },
+            },
+          ]}
             editable={{
                 onRowAdd: newData =>
                     new Promise((resolve, reject) => {
@@ -122,9 +145,11 @@ function ResearchPaperTable(props) {
 
 
     return (
-        <div style={{ padding: "20px" }}>
+        <div>
+        <AdminNavbar/>
+        <div style={{ padding: "20px",marginTop:"100px" }}>
             {table}
-            {feedBackToast}
+        </div>
         </div>
 
     )
