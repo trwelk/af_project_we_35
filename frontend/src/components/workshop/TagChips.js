@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import TagFacesIcon from '@material-ui/icons/TagFaces';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
-import AddWorkshopForm from './AddWorkshopForm';
 import { fetchWorkshopTags,fetchWorkshopTagSuccess } from '../../redux/actions/WorkshopTag.action';
 import { fetchWorkshopForTags, } from '../../redux/actions/Wokshop.action';
 
@@ -17,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         listStyle: 'none',
         padding: theme.spacing(0.5),
         margin: 0,
+        background: "#fff5f8",
         flexDirection:"row"
     },
     chip: {
@@ -74,9 +74,6 @@ export default function TagChips(props) {
                 );
             })}
 
-        </div>
-        <div>
-            <AddWorkshopForm/>
         </div>
         </Paper>
     );

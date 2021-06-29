@@ -41,6 +41,7 @@ function ResearchPaperTable(props) {
         { title: 'ID', field: 'id', editable: false },
         { title: 'Topic', field: 'paperTopic', },
         { title: 'Uploader', field: 'paperUploader' },
+        { title: 'Uploader Email', field: 'email' },
         { title: 'Link', field: 'paperLink' },
         {
             title: 'Status', field: 'state',

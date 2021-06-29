@@ -5,6 +5,7 @@
   "main": "App.js",
   "scripts": {
     "start": "parcel src/index.html --open",
+    "test": "jest"
     "build": "parcel build src/index.html"
   },
   "repository": {
@@ -19,11 +20,11 @@
   "homepage": "https://github.com/trwelk/af_project_we_35#readme",
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "parcel-bundler": "^1.12.5",
-    "@babel/preset-env": "^7.14.4",
-    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.1",
+    "parcel-bundler": "^1.12.5",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
@@ -36,7 +37,9 @@
     "@types/react": "^17.0.11",
     "assets": "^3.0.1",
     "axios": "^0.21.1",
+    "babel-jest": "^27.0.6",
     "chart.js": "^3.3.2",
+    "jest": "^27.0.6",
     "firebase": "^8.6.8",
     "jwt-decode": "^3.1.2",
     "material-table": "^1.69.3",
@@ -51,8 +54,10 @@
     "react-redux": "^7.2.4",
     "react-redux-firebase": "^3.10.0",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
     "react-slick": "^0.28.1",
     "react-slick-carousel": "^0.14.9",
+    "react-test-renderer": "^17.0.2",
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0"
   }

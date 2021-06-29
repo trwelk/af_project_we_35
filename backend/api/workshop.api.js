@@ -59,8 +59,6 @@ async function getWorkshop(workshopId) {
         if(err)
             console.log('Unable to retreive Workshops');
         else{
-            console.log('U',response);
-
             return response;
         }
      });

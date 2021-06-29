@@ -1,6 +1,5 @@
 import React from 'react';
-import NewsList from '../components/news/NewsList';
-import UserTable from '../components/user/UserTable'
+import ContactUsForm from '../components/views/util/ContactUsForm';
 import Heading1 from '../components/views/util/Heading1';
 import NavBar from '../components/views/util/NavBar';
 import ParagraphWithBackground from '../components/views/util/ParagraphWithBackground';
@@ -11,9 +10,9 @@ function News() {
     <div>
       <NavBar/>
       <div style={{background:"#fff5f8",padding: "20px",marginTop:"70px"}}>
-        <Heading1 data={{heading:"Stay Updated"}} />
+        <Heading1 data={{heading:"Contact Us"}} />
         <ParagraphWithBackground text={paragraph}/>
-        <NewsList/>
+        <ContactUsForm/>
       </div>
     </div>
     
