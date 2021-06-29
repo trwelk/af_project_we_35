@@ -7,6 +7,7 @@ import { fetchWorkshops } from '../redux/actions/Wokshop.action'
 import { makeStyles } from '@material-ui/core/styles';
 import Heading1 from '../components/views/util/Heading1';
 import { Paper } from '@material-ui/core';
+import AdminNavbar from '../components/views/AdminNavBar';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -93,7 +94,9 @@ function WorkshopManagement() {
     )
   })
   return (
-    <div>s
+    <div>
+      <AdminNavbar/>
+      <div style={{ padding: "20px",marginTop:"100px" }}>
       <Heading1 data={{ heading: "Workshop Details" }} />
       <Paper className={classes.paperCoverWorkshop} elevation={3}>
         <div style={{ display: "flex" }}>
@@ -107,6 +110,7 @@ function WorkshopManagement() {
           {cols}
         </div>
       </Paper>
+      </div>
     </div>
 
   );
