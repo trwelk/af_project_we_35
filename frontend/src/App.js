@@ -16,9 +16,10 @@ import Chart from './components/dashboard/Chart';
 import Dashboard from './pages/Dashboard';
 import NavBar from './components/views/util/NavBar';
 import WorkshopAdminTable from './components/workshop/WorkshopAdminTable';
-import DisplayResearchPaper from './components/researchPaper/DisplayResearchPaper';
-import PdfViewer from './components/researchPaper/PdfViewer';
 import NewsTable from './components/news/NewsTable';
+import KeynoteTable from './components/keynote/KeynoteTable';
+import ContactUs from './pages/ContactUs';
+import CallForPapers from './pages/CallForPapers';
 
 function App() {
   return (
@@ -31,13 +32,14 @@ function App() {
           <Route exact path="/workshops" component={Workshops} />
           <Route exact path="/test" component={WorkshopOverview} />
           <Route exact path="/test1" component={Chart} />
+          <Route exact path="/contactUs" component={ContactUs} />
+          <Route exact path="/papers" component={CallForPapers} />
+
           <Route exact path="/users" component={Users} />
           <Route exact path="/editor/workshops" component={WorkshopManagement} />
           <Route exact path="/editor/research" component={ResearchPaperTable} />
           <Route exact path="/editor/dashboard" component={Dashboard} />
           <Route exact path="/editor/workshopAdmin" component={WorkshopAdminTable} />
-          <Route exact path="/editor/res" component={DisplayResearchPaper} />
-          <Route exact path="/editor/pdf-display" component={PdfViewer} />
 
           <Route exact path="/editor/NewsTable" component={NewsTable} />
           <Route exact path="/login" component={Login} />
