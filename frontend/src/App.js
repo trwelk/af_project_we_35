@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import WorkshopCard from './components/workshop/WorkshopCard';
 import Users from './pages/Users';
+import Login from './pages/Login';
 import WorkshopManagement from './pages/WorkshopManagement';
 import LandingPage from './pages/LandingPage';
 import Header from './components/views/Header/Header';
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/editor/research" component={ResearchPaperTable} />
           <Route exact path="/editor/dashboard" component={Dashboard} />
           <Route exact path="/editor/workshopAdmin" component={WorkshopAdminTable} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </Router>
     </div>
