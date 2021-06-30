@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { AppBar, Button, IconButton, Toolbar } from '@material-ui/core';
 import { MenuIcon } from '@material-ui/icons'
 import { Typography } from '@material-ui/core';
@@ -36,7 +37,17 @@ function AdminNavbar(props) {
     const [navBackground, setNavBackground] = useState('appBarTransparent')
     const navRef = React.useRef()
     navRef.current = navBackground
+    const globalState = useSelector((state) => state);
+    let history = useHistory();
+    console.log(globalState)
+    if(globalState.auth.logged){
+        let user = globalState.auth.loggedUser;
+        if(user.type == 'admin')
+            history.push('/users');
+    } else {
+        history.push('/login');
 
+    }
     useEffect(() => {
         const handleScroll = () => {
             const show = window.scrollY > 310
