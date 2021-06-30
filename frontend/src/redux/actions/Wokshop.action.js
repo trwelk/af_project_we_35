@@ -134,20 +134,23 @@ export const deleteWorkshop = (dispatch,workshopId) => {
 
 //VALIDATION
 export const validateWorkshopObj = (data) =>  {
-    if(data.state == null || data.state == ""){
-     return "Field state Cannot be empty"
+    console.log(data)
+    if(data.title == null || data.title == ""){
+     return "Field title Cannot be empty"
    }
    else if(data.title == null || data.title == ""){
      return "Field title Cannot be empty"
    }
    else if(data.conductor == null || data.conductor == ""){
      return "Field conductor Cannot be empty"
-   }
-   else if(data.noOfHours == null){
-     return "Field no Of Hours Cannot be empty"
-   }
-   else if(data.id == null || data.id == ""){
-    return "Field id Cannot be empty"
+    }
+    else if(data.link == null || data.link == ""){
+      return "Field link Cannot be empty"
+    }
+   else if(data.email == null || data.email == ""){
+    return "Field email Cannot be empty"
+  } else if( !(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(data.email))){
+    return "Field Email is invalid"
   }
    else
    return null;
