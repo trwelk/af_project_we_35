@@ -29,10 +29,12 @@ export const validateEndUserReg = (data,dispatch) =>  {
       return "Contact Cannot be empty"
     }
     else{
-      dispatch({
-        type: ActionTypes.VALIDATE_ENDUSER_SUCCESS,
-        payload: data
-      });
+      if(dispatch){
+        dispatch({
+          type: ActionTypes.VALIDATE_ENDUSER_SUCCESS,
+          payload: data
+        });
+      }
       return null;
     }
     
