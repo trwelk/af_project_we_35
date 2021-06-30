@@ -88,7 +88,7 @@ function ScheduledAtom(props) {
                         <h2 className={classes.h2}>{data.title}</h2>
                     </div>
                     <div className={classes.titleCover}>
-                        <p className={classes.p}>Workshop Title: </p>
+                        <p className={classes.p}>Conductor: </p>
                         <h2 className={classes.h2}>{data.conductor}</h2>
                     </div>
                 </div>
