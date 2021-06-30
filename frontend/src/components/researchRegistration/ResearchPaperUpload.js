@@ -8,6 +8,7 @@ import { firebaseCon } from '../../base';
 import { useDispatch, useSelector } from 'react-redux';
 import { validateResearchPaper, submitResearchPaper } from '../../redux/actions/ResearchPaper.action';
 import { regEndUser } from '../../redux/actions/EndUser.action';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     paperStyle: {
@@ -42,6 +43,7 @@ function ResearchPaperUpload () {
     const [fileState, setFileState] = React.useState({ fileUpload: null, file: null});
     const globalState = useSelector((state) => state);
     const storageRef = firebaseCon.storage().ref();
+    let history = useHistory();
 
     if(globalState.enduser.valid && state.paperUploader == "" && state.email == ""){
         const researcher = globalState.enduser.enduser;
@@ -77,6 +79,8 @@ function ResearchPaperUpload () {
                         email: state.email,
                         paperLink: url
                     }, dispatch);
+                }).then(() => {
+                    history.push('/');
                 }),
                 (error) => {
                     console.log(error);
@@ -100,7 +104,7 @@ function ResearchPaperUpload () {
         <Grid>
             <Paper elevation={10} className={classes.paperStyle}>
                 <h2 className={classes.textStyle}><AssignmentIcon fontSize="large"/> Research Paper Upload</h2>
-                <TextField name="topic" label="Paper Topic" placeholder="Enter Topic" onChange={handleChange} fullWidth required className={classes.fieldStyle}/>
+                <TextField name="paperTopic" label="Paper Topic" placeholder="Enter Topic" onChange={handleChange} fullWidth required className={classes.fieldStyle}/>
                 <TextField
                     className={classes.margin}
                     id="researchPaper"
