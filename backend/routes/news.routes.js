@@ -16,15 +16,6 @@ router.get('/', async ctx => {
     ctx.body = news
 });
 
-router.get('/:id/subjects', async ctx => {
-    let newsId = ctx.params.id;
-    let news = await newsApi.getNewsById( newsId )
-        .catch(error => {
-            ctx.throw(404)
-        })
-    ctx.body = news
-});
-
 //Used to add a new news 
 router.post('/', async ctx => {
     let news = ctx.request.body;
@@ -36,5 +27,22 @@ router.post('/', async ctx => {
     ctx.body = news;
 });
 
+
+
+//Used to update an news
+router.patch('/', async ctx => {
+    console.log("patch Recieved")
+    let news = ctx.request.body;
+    news = await newsApi.updateNews(news);
+    ctx.response.status = 201;
+    console.log("Patch : returned news" , news)
+    ctx.body = news;
+});
+
+//Used to delete an news
+router.delete('/:id', async ctx => {
+    let newsId = ctx.params.id;
+    ctx.body = await newsApi.deleteNews(newsId);
+})
 
 module.exports = router;

@@ -11,7 +11,10 @@ var workshopSchema = mongoose.Schema({
     approved:Boolean,
     state:String,
     tags:Array,
-    link:String
+    link:String,
+    imageUrl:String,
+    email:String
+
 
 });
 

@@ -53,7 +53,6 @@ function Login() {
             history.push('/users');
     } else if(globalState.auth.fail) {
         setFail(true);
-        console.log("Set fail to true");
         setState({ username: "", password: ""});
         superUserLoginReset(dispatch);
     }

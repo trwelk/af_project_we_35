@@ -7,10 +7,19 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ResearcherForm from '../components/researchRegistration/ResearcherForm';
 import ResearchPaperUpload from '../components/researchRegistration/ResearchPaperUpload';
+import { useDispatch, useSelector } from 'react-redux';
+import { ActionTypes } from '../redux/constants/action-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    display: "flex",
+    flexDirection: "column",
+    fontFamily: "Roboto",
+    backgroundImage: "url(https://cdn.wallpapersafari.com/49/20/acu0rZ.jpg)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100vh"
   },
   button: {
     marginRight: theme.spacing(1),
@@ -40,14 +49,16 @@ export default function ResearchRegister() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
+  const globalState = useSelector((state) => state);
+  const dispatch = useDispatch();
 
-  const handleNext = () => {
+  if(globalState.enduser.next){
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+    dispatch({
+      type: ActionTypes.RESEARCHER_REGISTER_NEXT,
+      payload: ""
+    });
+  }
 
   const handleReset = () => {
     setActiveStep(0);
@@ -67,33 +78,7 @@ export default function ResearchRegister() {
         })}
       </Stepper>
       <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              Reset
-            </Button>
-          </div>
-        ) : (
-          <div>
-            {getStepContent(activeStep)}
-            <div>
-              <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Back
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
-            </div>
-          </div>
-        )}
+        {getStepContent(activeStep)}
       </div>
     </div>
   );

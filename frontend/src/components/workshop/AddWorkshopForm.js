@@ -16,7 +16,9 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { fetchWorkshopTags } from '../../redux/actions/WorkshopTag.action';
-import { createWorkshop } from '../../redux/actions/Wokshop.action';
+import { createWorkshop , validateWorkshopObj} from '../../redux/actions/Wokshop.action';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
     dialog: {
@@ -37,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
 export default function AddWorkshopForm() {
     const [open, setOpen] = React.useState(false);
     const [state, setState] = React.useState({ name: "", title: "", description: "", conductor: "",email:"" ,link:""});
+    const [openFeedback, setOpenFeedback] = React.useState({   openf: false,
+        vertical: 'bottom',
+        horizontal: 'right',});
+    const {vertical,horizontal,openf} = openFeedback
+    const [error, setError] = React.useState("");
     const [selectedTags, setSelectedTags] = React.useState([]);
     const dispatch = useDispatch();
     const classes = useStyles();
@@ -64,7 +71,12 @@ export default function AddWorkshopForm() {
     };
 
     const handleSubmit = () => {
-        createWorkshop({ ...state, tags: selectedTags }, dispatch,);
+        let err = validateWorkshopObj(state)
+        setError(err)
+        if(error == null){
+            createWorkshop({ ...state, tags: selectedTags }, dispatch,);
+            setOpen(false)
+        }
 
     };
 
@@ -75,6 +87,7 @@ export default function AddWorkshopForm() {
     const handleTagChange = (event) => {
         setSelectedTags(event.target.value);
     };
+
 
     return (
         <div>
@@ -90,6 +103,7 @@ export default function AddWorkshopForm() {
         </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Workshops</DialogTitle>
+                <div style={{marginLeft:"20px",color:"red"}}>{error ? error : ""}</div>
                 <DialogContent className={classes.dialog}>
                     <DialogContentText>
                         Add Product Details
@@ -117,8 +131,8 @@ export default function AddWorkshopForm() {
                      <TextField
                         autoFocus
                         margin="dense"
-                        name="Document Link"
-                        label="link"
+                        name="link"
+                        label="Document Link"
                         type="text"
                         fullWidth
                         onChange={handleChange}
