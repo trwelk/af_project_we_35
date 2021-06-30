@@ -16,8 +16,7 @@ const addWorkshop =  async obj => {
         startTime: obj.startTime,
         noOfHours: obj.noOfHours,
         state:"requested",
-        tags:obj.tags,
-        link:obj.link
+        tags:obj.tags
 
     });
 
