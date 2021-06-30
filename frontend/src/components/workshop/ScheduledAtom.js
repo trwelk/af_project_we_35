@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import { IconButton } from '@material-ui/core'
-import {removeWorkshopSlot} from '../../redux/actions/Wokshop.action'
+import { removeWorkshopSlot } from '../../redux/actions/Wokshop.action'
 
 //********************************************Styling************************************************************* */
 
@@ -19,28 +19,39 @@ const useStyles = makeStyles((theme) => ({
         //  },
         height: "100px",
         borderRadius: "0px",
-        display:'flex',
-        flexDirection:'column'
+        display: 'flex',
+        flexDirection: 'column'
 
 
     },
-    btnCoverWoskshop:{
-        height:"20%",
+    btnCoverWoskshop: {
+        height: "20%",
         display: "flex",
         justifyContent: "flex-end"
     },
-    detailCover:{
-        height:"80%"
+    detailCover: {
+        height: "80%",
+        display: 'flex',
+        flexDirection: 'column'
     },
-    h2:{
-        margin:"0px",
-        fontFamily:"-webkit-pictograph",
-        marginLeft:"5px"
+    h2: {
+        margin: "0px",
+        fontFamily: "-webkit-pictograph",
+        marginLeft: "5px",
+        fontSize: "20px",
+        fontWeight: 500
     },
-    p:{
-        margin:"0px",
-        marginLeft:"5px"
+    p: {
+        margin: "0px",
+        marginLeft: "5px",
+        fontSize: "12px"
 
+    },
+    titleCover: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        height:"40px"
     }
 
 }));
@@ -58,7 +69,7 @@ function ScheduledAtom(props) {
         data.date = null
         data.startTime = null
 
-        removeWorkshopSlot(dispatch,data)
+        removeWorkshopSlot(dispatch, data)
     }
 
     //*********************************************Rendering elements************************************************************* */
@@ -72,8 +83,14 @@ function ScheduledAtom(props) {
                     </IconButton>
                 </div>
                 <div className={classes.detailCover}>
-                    <h2 className={classes.h2}>{data.title}</h2>
-                    <p className={classes.p}>{data.conductor}</p>
+                    <div className={classes.titleCover}>
+                        <p className={classes.p}>Workshop Title: </p>
+                        <h2 className={classes.h2}>{data.title}</h2>
+                    </div>
+                    <div className={classes.titleCover}>
+                        <p className={classes.p}>Workshop Title: </p>
+                        <h2 className={classes.h2}>{data.conductor}</h2>
+                    </div>
                 </div>
             </Paper>
         </div>
