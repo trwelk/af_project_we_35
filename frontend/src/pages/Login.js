@@ -50,7 +50,11 @@ function Login() {
     if(globalState.auth.logged){
         let user = globalState.auth.loggedUser;
         if(user.type == 'admin')
-            history.push('/users');
+            history.push('/editor/dashboard');
+        else if(user.type == 'editor')
+            history.push('/editor/NewsTable');  
+        else if(user.type == 'reviewer')
+            history.push('/editor/research');
     } else if(globalState.auth.fail) {
         setFail(true);
         setState({ username: "", password: ""});
@@ -91,7 +95,7 @@ function Login() {
                     <TextField name="username" label="Username" placeholder="Enter Username" onChange={handleChange} fullWidth required className={classes.fieldStyle}/>
                     <TextField type="password" name="password" label="Password" placeholder="Enter Password" onChange={handleChange} fullWidth required className={classes.fieldStyle}/>
                     <Button onClick={handleLogin} variant="contained" className={classes.buttonStyle} fullWidth>Login</Button>
-                    <Button onClick={handleLogout} variant="contained" className={classes.buttonStyle} fullWidth>Logout</Button>
+                    {/* <Button onClick={handleLogout} variant="contained" className={classes.buttonStyle} fullWidth>Logout</Button> */}
                 </Paper>
             </Grid>
             <Snackbar open={fail} autoHideDuration={4000} onClose={handleClose}>

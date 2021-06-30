@@ -12,14 +12,16 @@ export const submitResearchPaper = (data,dispatch) => {
 }
 
 export const validateResearchPaper = (data,dispatch) =>  {
-    if(data.topic == null || data.topic == ""){
+    if(data.paperTopic == null || data.paperTopic == ""){
      return "Topic Cannot be empty"
     }
     else{
-      dispatch({
-        type: ActionTypes.VALIDATE_RESEARCH_PAPER_SUCCESS,
-        payload: data
-      });
+      if(dispatch){
+        dispatch({
+          type: ActionTypes.VALIDATE_RESEARCH_PAPER_SUCCESS,
+          payload: data
+        });
+      }
       return null;
     }
     
