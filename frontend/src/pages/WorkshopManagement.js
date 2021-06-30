@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Heading1 from '../components/views/util/Heading1';
 import { Paper } from '@material-ui/core';
 import AdminNavbar from '../components/views/AdminNavBar';
+import { AppConstants } from '../redux/constants/constants';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,12 +56,21 @@ const useStyles = makeStyles((theme) => ({
 function WorkshopManagement() {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [state, setState] = React.useState({ name: "", description: "", month: "",year:"",dates:[] });
 
   useEffect(() => {
     fetchWorkshops(dispatch);
+    axios.get(AppConstants.REST_URL_HOST + '/conference')
+    .then(response => {
+        setState(response.data[0])
+
+    })
+    .catch(error => {
+        console.log(error)
+    }) 
   }, [])
 
-  const daysArr = [17, 18, 19, 20]
+  const daysArr = state.dates
   const timeColumn = [];
   const headRow = []
 

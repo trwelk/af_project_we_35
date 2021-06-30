@@ -52,3 +52,25 @@ export const updateResearchSuccess = (data) =>  {
     }
 }
 
+
+export const validateResearchObj = (data) =>  {
+    if(data.paperLink == null || data.paperLink == ""){
+     return "Field paperLink Cannot be empty"
+   }
+   else if(data.paperUploader == null || data.paperUploader == ""){
+     return "Field paperUploader Cannot be empty"
+   }
+   else if(data.paperTopic == null || data.paperTopic == ""){
+     return "Field paperTopic Cannot be empty"
+   }
+   else if(data.email == null || data.email == ""){
+     return "Field Email Cannot be empty"
+   }
+   else if(data.id == null || data.id == ""){
+    return "Field id Cannot be empty"
+  }
+   else
+   return null;
+ }
+
+
