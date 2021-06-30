@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import ScheduleColumn from '../components/workshop/ScheduleColumn';
 import { fetchWorkshops } from '../redux/actions/Wokshop.action'
 import WorkshopCard from '../components/workshop/WorkshopCard'
 import { makeStyles } from '@material-ui/core/styles';
-import ImageCarousel from '../components/user/ImageCarousel';
 import ImageTileDisplay from '../components/views/util/ImageTileDisplay';
-import KeynoteCard from '../components/keynote/KeynoteCard';
 import KeynoteList from '../components/keynote/KeynoteList';
 import NewsList from '../components/news/NewsList';
-import { Parallax } from 'react-parallax';
 import Heading1 from '../components/views/util/Heading1';
 import ParagraphWithBackground from '../components/views/util/ParagraphWithBackground';
 import HeroWithContent from '../components/views/util/HeroWithContent';

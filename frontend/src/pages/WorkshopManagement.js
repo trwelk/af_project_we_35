@@ -70,7 +70,7 @@ function WorkshopManagement() {
     }) 
   }, [])
 
-  const daysArr = state.dates
+  const daysArr = state ? state.dates : [14,15]
   const timeColumn = [];
   const headRow = []
 

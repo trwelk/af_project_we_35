@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { UsbOutlined } from '@material-ui/icons'
 const workshopUrl = "/workshops";
 
-
+//READ
 export const fetchWorkshopsLoading = (data) =>  {
     return {
         type: ActionTypes.WORKSHOPS_LOADING,
@@ -50,6 +50,8 @@ export const fetchWorkshopForTags = (dispatch,category) => {
     }) 
 }
 
+
+//UPDATE
 export const updateWorkshop = (dispatch,workshop) => {
         console.log(workshop)
         axios.patch(AppConstants.REST_URL_HOST + workshopUrl,workshop)
@@ -61,17 +63,21 @@ export const updateWorkshop = (dispatch,workshop) => {
             }) 
 }
 
+export const changeStateToRequested = (workshop) => {
+    workshop.state  = AppConstants.STATE_REQUESTED
+    return workshop;
+}
 
 export const removeWorkshopSlot = (dispatch,workshop) => {
     let workshopObj = workshop
-    workshopObj.state = AppConstants.STATE_REQUESTED
+    workshopObj = changeStateToRequested(workshop);
 
     axios.patch(AppConstants.REST_URL_HOST + workshopUrl,workshopObj)
         .then(response => {
             dispatch(updateWorkshopSuccess({...response.data}))
         })
         .catch(error => {
-            // console.log(error)
+            console.log(error)
         }) 
 }
 
@@ -104,7 +110,7 @@ export const createWorkshopSuccess = (data) => {
 }
 
 
-
+//DELETE
 export const deleteWorkshopsSuccess = (data) =>  {
     return {
         type: ActionTypes.DELETE_WORKSHOPS_SUCCESS,
@@ -124,3 +130,25 @@ export const deleteWorkshop = (dispatch,workshopId) => {
                 console.log(error)
             }) 
 }
+
+
+//VALIDATION
+export const validateWorkshopObj = (data) =>  {
+    if(data.state == null || data.state == ""){
+     return "Field state Cannot be empty"
+   }
+   else if(data.title == null || data.title == ""){
+     return "Field title Cannot be empty"
+   }
+   else if(data.conductor == null || data.conductor == ""){
+     return "Field conductor Cannot be empty"
+   }
+   else if(data.noOfHours == null){
+     return "Field no Of Hours Cannot be empty"
+   }
+   else if(data.id == null || data.id == ""){
+    return "Field id Cannot be empty"
+  }
+   else
+   return null;
+ }

@@ -1,5 +1,4 @@
 import React from 'react';
-import ContactUsForm from '../components/views/util/ContactUsForm';
 import Heading1 from '../components/views/util/Heading1';
 import NavBar from '../components/views/util/NavBar';
 import Button from '@material-ui/core/Button';
@@ -12,16 +11,20 @@ function CallForPapers() {
     <div>
       <NavBar/>
       <div style={{background:"#fff5f8",padding: "20px",marginTop:"70px",paddingBottom:"173px"}}>
-        <Heading1 data={{heading:"Contact Us"}} />
+        <Heading1 data={{heading:"Research Papers"}} />
         <ParagraphWithBackground text={paragraph}/>
-        <div>
-        <Button
-        variant="contained"
-        color="secondary"
-        startIcon={<GetAppIcon />}
-      >
-        Download Paper Template
-      </Button>
+        <div style={{ marginLeft: "73px" }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<GetAppIcon />}
+            >             
+             <a style={{textDecoration:"none",color:"black"}} download href={require('/assets/abc.pdf')}>
+
+            Download Paper Template
+              </a>
+
+          </Button>
         </div>
       </div>
     </div>

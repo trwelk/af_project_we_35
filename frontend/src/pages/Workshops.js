@@ -1,7 +1,7 @@
 import React from 'react';
 import Heading1 from '../components/views/util/Heading1';
-import HeroWithContent from '../components/views/util/HeroWithContent';
-import NavBar from '../components/views/util/NavBar';
+import Button from '@material-ui/core/Button';
+import GetAppIcon from '@material-ui/icons/GetApp'; import NavBar from '../components/views/util/NavBar';
 import ParagraphWithBackground from '../components/views/util/ParagraphWithBackground';
 import TagChips from '../components/workshop/TagChips';
 import WorkshopList from '../components/workshop/WorkshopList';
@@ -10,13 +10,26 @@ function Workshops() {
 
     return (
         <div>
-            <NavBar/>
-        <div style={{ background: "#fff5f8",padding: "20px",marginTop:"65px" }}>
-            <Heading1 data={{ heading: "Workshops" }} />
-            <ParagraphWithBackground text={paragraph} />
-            <TagChips/>
-            <WorkshopList />
-        </div>
+            <NavBar />
+            <div style={{ background: "#fff5f8", padding: "20px", marginTop: "65px" }}>
+                <Heading1 data={{ heading: "Workshops" }} />
+                <ParagraphWithBackground text={paragraph} />
+                <TagChips />
+                <WorkshopList />
+                <div style={{ marginLeft: "73px" }}>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<GetAppIcon />}
+                    >                    <a style={{textDecoration:"none",color:"black"}} download href={require('/assets/abc.pdf')}>
+
+                            Download Paper Template
+                                     </a>
+
+                    </Button>
+                </div>
+            </div>
+
         </div>
     );
 }
