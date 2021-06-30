@@ -78,7 +78,9 @@ const useStyles = makeStyles((theme) => ({
 
 function KeynoteCard(props) {
     const classes = useStyles();
-
+    console.log(props)
+    let {speaker,description,designation} = props
+    if(props.data){
     return (
         <Container className={classes.root} component="section">
             <Paper elevation={0} className={classes.paperCover}>
@@ -87,17 +89,15 @@ function KeynoteCard(props) {
                 </div>
                 <div className={classes.keyNody}>
                     <h4 variant="h6" className={classes.keyName} >
-                        Duminda Silva
+                        {props.data.speaker}
                      </h4>
                     <Typography variant="caption" display="block" gutterBottom>
-                        position
+                        {props.data.designation}
                     </Typography>
                 </div>
                 <div className={classes.keyFoot}>
                 <Typography className={classes.keyFootText} variant="body2" gutterBottom>
-                    body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti?
+                    {props.data.description}
                 </Typography>
                 </div>
                 <div className={classes.keyFootSocial}>
@@ -108,6 +108,12 @@ function KeynoteCard(props) {
             </Paper>
         </Container>
     );
+    }
+    else{
+        return(
+            <div></div>
+        )
+    }
 }
 
 
