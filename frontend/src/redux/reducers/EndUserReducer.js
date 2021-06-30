@@ -10,7 +10,7 @@ export const EndUserReducer = (state = initialState, { type, payload }) => {
         case ActionTypes.VALIDATE_ENDUSER_SUCCESS:
             console.log(payload);
             return { enduser: payload, next: true, valid: true };
-        case ActionTypes.RESEARCHER_REGISTER_NEXT:
+        case ActionTypes.ENDUSER_REGISTER_NEXT:
             console.log(payload);
             return { enduser: state.enduser, next: false, valid: true };
         default:
