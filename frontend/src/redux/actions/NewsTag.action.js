@@ -24,7 +24,7 @@ export const fetchNewsTagSuccess = (data) =>  {
 export const fetchNewsTags = (dispatch) => {
     let isLoading = true;
         dispatch(fetchNewsTagsLoading(isLoading))
-        axios.get("http://localhost:9090/newstags")
+        axios.get(AppConstants.REST_URL_HOST + "/newstags")
             .then(response => {
                 console.log(response.data)
                 dispatch(fetchNewsTagSuccess(response.data))

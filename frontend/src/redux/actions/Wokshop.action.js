@@ -40,7 +40,7 @@ export const fetchWorkshops = (dispatch) => {
 
 export const fetchWorkshopForTags = (dispatch,category) => {
     console.log(category)
-    axios.get("http://localhost:9090/workshoptags/" +category.id + "/workshops")
+    axios.get(AppConstants.REST_URL_HOST + "/workshoptags/" +category.id + "/workshops")
     .then(response => {
         dispatch(fetchWorkshopsSuccess(response.data))
     })
