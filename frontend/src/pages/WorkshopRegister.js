@@ -6,7 +6,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import EndUserRegForm from '../components/user/EndUserRegForm';
-import ResearchPaperUpload from '../components/researchRegistration/ResearchPaperUpload';
+import WorkshopPropUpload from '../components/workshopRegistration/WorkshopPropUpload';
 import { useDispatch, useSelector } from 'react-redux';
 import { ActionTypes } from '../redux/constants/action-types';
 
@@ -39,13 +39,13 @@ function getStepContent(step) {
     case 0:
       return <EndUserRegForm/>;
     case 1:
-        return <ResearchPaperUpload/>;
+        return <WorkshopPropUpload/>;
     default:
       return 'Unknown step';
   }
 }
 
-export default function ResearchRegister() {
+export default function WorkshopRegister() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
