@@ -19,7 +19,7 @@ function ScheduleColumn(props) {
     const classes = useStyles();
 
     //initialize all columns to empty slots
-    for (let slot = 0; slot < noOfHours * 2 - 1; slot++) {
+    for (let slot = 0; slot < noOfHours * 2 ; slot++) {
         blankColumn.push(<ScheduleAtom key={slot} date={date} startTime={startTime + (slot * 0.5)} />)
     }
 
