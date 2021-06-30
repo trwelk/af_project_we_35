@@ -45,6 +45,6 @@ app.use(cors(corsOptions));
  .use(SuperUserRoutes.allowedMethods());
 
 
-app.listen(9090);
+app.listen(80);
 
-console.log('Application is running on port 9090');
+console.log('Application is running on port 80');
