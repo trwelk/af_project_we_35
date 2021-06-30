@@ -62,7 +62,7 @@ function WorkshopAdminTable(props) {
         return (
             <div>
                 <AdminNavbar />
-                <div style={{ padding: "20px", marginTop: "100px" }}>
+                <div style={{ padding: "20px", marginTop: "100px"}}>
                     <div className={classes.buttonCover}>
                         <AddWorkshopForm />
                     </div>
