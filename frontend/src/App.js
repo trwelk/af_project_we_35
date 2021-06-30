@@ -21,6 +21,7 @@ import NewsTable from './components/news/NewsTable';
 import ContactUs from './pages/ContactUs';
 import CallForPapers from './pages/CallForPapers';
 import ConferenceAdmin from './pages/ConferenceAdmin';
+import KeynoteTable from './components/keynote/KeynoteTable';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/researcher/register" component={ResearchRegister} />
           <Route exact path="/workshop/register" component={WorkshopRegister} />
+          <Route exact path="/editor/keynote" component={KeynoteTable} />
         </Switch>
       </Router>
     </div>

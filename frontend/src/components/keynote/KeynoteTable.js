@@ -63,7 +63,7 @@ const keynotes = globalState.keynote.keynote
       <div style={{padding: "20px"}}>
 
         <MaterialTable style={{padding:"0px",boxShadow: "0 0 2px 2px black"}}
-        title={"News"}
+        title={"Keynotes"}
           columns={[
             { title: 'Speaker', field: 'speaker' },
             { title: 'Description', field: 'description'},
