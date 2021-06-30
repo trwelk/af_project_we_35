@@ -59,4 +59,4 @@ async function deleteUser(username) {
      return deleteDetails;
 }
 
-module.exports = {userSignUp,userLogin,getUser,updateUser,deleteUser};
+module.exports = {userSignUp,getUser,updateUser,deleteUser};
