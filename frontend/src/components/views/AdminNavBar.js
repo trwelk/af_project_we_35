@@ -85,7 +85,7 @@ function AdminNavbar(props) {
                         <Link className={classes.link} to="/editor/dashboard">Dashboard</Link>
                     </Button>
                     <Button color="black">
-                        <Link className={classes.link} to="/user">User management</Link>
+                        <Link className={classes.link} to="/users">User management</Link>
                     </Button>
                     <Button color="black">
                         <Link className={classes.link} to="/editor/conference">Conference </Link>
