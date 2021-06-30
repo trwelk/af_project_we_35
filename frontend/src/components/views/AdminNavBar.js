@@ -42,25 +42,13 @@ function AdminNavbar(props) {
     console.log(globalState)
     if(globalState.auth.logged){
         let user = globalState.auth.loggedUser;
-        if(user.type == 'admin')
-            history.push('/users');
+       
     } else {
         history.push('/login');
 
     }
     useEffect(() => {
-        const handleScroll = () => {
-            const show = window.scrollY > 310
-            if (show) {
-                setNavBackground('appBarSolid')
-            } else {
-                setNavBackground('appBarTransparent')
-            }
-        }
-        document.addEventListener('scroll', handleScroll)
-        return () => {
-            document.removeEventListener('scroll', handleScroll)
-        }
+        
     })
     const text = props.text
     return (
