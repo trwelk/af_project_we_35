@@ -21,7 +21,6 @@ const addWorkshop =  async obj => {
         imageUrl:obj.imageUrl,
         email:obj.email
 
-
     });
 
     let savedWorkshop = await newWorkshop.save();
