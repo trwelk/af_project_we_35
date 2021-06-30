@@ -81,10 +81,10 @@ async function updateWorkshop(workshop) {
     var filter = {'id': workshop.id};
     const approvedMessage = "Dear Applicant The Workshop Proposal has been approved"
     const declinedMessage = "Dear Applicant We are sorry to inform you that your Workshop Proposal has been declined"
-    if(research.state == 'approved'){
-        mailApi.sendMail("REQUEST APPROVED",approvedMessage,research.email)
-    }else if (research.state == 'declined'){
-        mailApi.sendMail("REQUEST DECLINED",declinedMessage,research.email)
+    if(workshop.state == 'approved'){
+        mailApi.sendMail("REQUEST APPROVED",approvedMessage,workshop.email)
+    }else if (workshop.state == 'declined'){
+        mailApi.sendMail("REQUEST DECLINED",declinedMessage,workshop.email)
     }
     let updatedWorkshop = await Workshop.updateOne(filter, workshop, {new: true,},function(err, doc) {
         if (err) 

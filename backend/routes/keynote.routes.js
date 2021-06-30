@@ -2,7 +2,7 @@ const keynoteApi = require('../api/keynote.api');
 const Router = require('@koa/router');
 
 const router = new Router({
-    prefix: '/keynote'
+    prefix: '/keynotes'
 });
 
 

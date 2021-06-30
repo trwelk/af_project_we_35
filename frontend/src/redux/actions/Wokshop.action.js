@@ -134,7 +134,6 @@ export const deleteWorkshop = (dispatch,workshopId) => {
 
 //VALIDATION
 export const validateWorkshopObj = (data) =>  {
-    console.log(data)
     if(data.title == null || data.title == ""){
      return "Field title Cannot be empty"
    }

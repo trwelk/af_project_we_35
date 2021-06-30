@@ -48,9 +48,7 @@ function KeynoteList(props) {
     const keynoteList = []
 
     useEffect(() => {
-        console.log('asdsdadasdas')
-
-        axios.get(AppConstants.REST_URL_HOST + "/keynote")
+        axios.get(AppConstants.REST_URL_HOST + "/keynotes")
         .then(response => {
             console.log(response)
             setState(response.data)

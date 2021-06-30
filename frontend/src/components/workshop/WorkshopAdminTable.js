@@ -71,6 +71,7 @@ function WorkshopAdminTable(props) {
                         columns={[
                             { title: 'Title', field: 'title' },
                             { title: 'conductor', field: 'conductor' },
+                            { title: 'Email', field: 'email' },
                             { title: 'Number of Hours', field: 'noOfHours', type: 'numeric' },
                             { title: 'State', field: 'state', lookup: { requested: 'requested', approved: 'approved', declined: 'declined' } },
                             { title: 'ID', field: 'id' },
