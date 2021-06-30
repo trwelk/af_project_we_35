@@ -8,7 +8,6 @@ import Container from '@material-ui/core/Container';
 import {Typography} from '@material-ui/core';
 import { Paper } from '@material-ui/core';
 import KeynoteCard from './KeynoteCard';
-import { AppConstants } from '../../redux/constants/constants';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,12 +45,17 @@ function KeynoteList(props) {
     const dispatch = useDispatch();
     const classes = useStyles();
     const keynoteList = []
+
     useEffect(() => {
-        axios.get(AppConstants.REST_URL_HOST + "/keynotes")
+        console.log('asdsdadasdas')
+
+        axios.get("http://localhost:9090/keynote")
         .then(response => {
+            console.log(response)
             setState(response.data)
         })
         .catch(error => {
+            console.log(error)
             isLoading = false;
             
         }) 

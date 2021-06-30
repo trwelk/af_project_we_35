@@ -5,6 +5,7 @@ import { WorkshopTagReducer } from './WorkshopTagReducer'
 import { SuperUserReducer } from './SuperUserReducer'
 import { AuthReducer } from './AuthReducer'
 import { ResearchReducer } from './ResearchReducer'
+import { keynoteReducer } from './KeynoteReducer'
 
  const reducer = combineReducers({
     workshop:WorkshopReducer,
@@ -12,7 +13,8 @@ import { ResearchReducer } from './ResearchReducer'
     news:newsReducer,
     superuser: SuperUserReducer,
     auth: AuthReducer,
-    research:ResearchReducer
+    research:ResearchReducer,
+    keynote:keynoteReducer
 })
 
 export default reducer

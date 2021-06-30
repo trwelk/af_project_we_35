@@ -1,11 +1,6 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser')
 const cors = require('@koa/cors');
-const mongoose = require('mongoose');
-const AppConstants  = require('./constants/AppConstants');
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useUnifiedTopology', true);
-mongoose.connect('mongodb+srv://user:user@cluster0.ijxvo.mongodb.net/iCaf?retryWrites=true&w=majority');
 const corsOptions ={
     origin:'http://localhost:1234', 
     credentials:true,            //access-control-allow-credentials:true
@@ -17,6 +12,7 @@ const workshopTagRoutes = require('./routes/workshopTags.routes')
 const newsRoutes = require('./routes/news.routes')
 const SuperUserRoutes = require('./routes/superUser.routes.js')
 const researchPaperRoutes = require('./routes/researchPaper.routes')
+const keynoteRoutes = require('./routes/keynote.routes')
 const conferenceRoutes = require('./routes/conference.routes')
 
 
@@ -28,7 +24,10 @@ app.use(cors(corsOptions));
  .use(WorkshopRoutes.allowedMethods());
 
  app.use(conferenceRoutes.routes())
-.use(conferenceRoutes.allowedMethods());
+ .use(conferenceRoutes.allowedMethods());
+
+ app.use(keynoteRoutes.routes())
+ .use(keynoteRoutes.allowedMethods());
 
  app.use(newsRoutes.routes())
  .use(newsRoutes.allowedMethods());
@@ -45,6 +44,6 @@ app.use(cors(corsOptions));
  .use(SuperUserRoutes.allowedMethods());
 
 
-app.listen(80);
+app.listen(9090);
 
-console.log('Application is running on port 80');
+console.log('Application is running on port 9090');
