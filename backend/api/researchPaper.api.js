@@ -76,9 +76,12 @@ async function deleteResearchPaper(resaerchPaperId) {
 async function updateResearch(research) {
     var filter = {id: research.id};
     console.log(research)
-    const message = "Dear Applicant The research paper has been approved"
+    const approvedMessage = "Dear Applicant The research paper has been approved"
+    const declinedMessage = "Dear Applicant We are sorry to inform you that your research paper has been declined"
     if(research.state == 'approved'){
-        mailApi.sendMail("REQUEST APPROVED",message,research.email)
+        mailApi.sendMail("REQUEST APPROVED",approvedMessage,research.email)
+    }else if (research.state == 'declined'){
+        mailApi.sendMail("REQUEST DECLINED",declinedMessage,research.email)
     }
     let updatedResearch = await researchPaperSchema.findOneAndReplace(filter,research, {
         new: true
