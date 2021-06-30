@@ -15,7 +15,7 @@ import { ResearchPaperReducer } from './ResearchPaperReducer'
     news:newsReducer,
     superuser: SuperUserReducer,
     auth: AuthReducer,
-    keynote:keynoteReducer
+    keynote:keynoteReducer,
     enduser: EndUserReducer,
     research:ResearchReducer,
     researchPaper: ResearchPaperReducer
