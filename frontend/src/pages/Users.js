@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import UserTable from '../components/user/UserTable';
 import { makeStyles } from '@material-ui/core/styles';
+import AdminNavbar from '../components/views/AdminNavBar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,6 +19,7 @@ function Users() {
     const classes = useStyles();
     return(
         <div className={classes.root}>
+            <AdminNavbar/>
             <UserTable/>
         </div>
     );

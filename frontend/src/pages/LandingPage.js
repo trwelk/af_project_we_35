@@ -11,6 +11,7 @@ import Heading1 from '../components/views/util/Heading1';
 import ParagraphWithBackground from '../components/views/util/ParagraphWithBackground';
 import HeroWithContent from '../components/views/util/HeroWithContent';
 import NavBar from '../components/views/util/NavBar';
+import Footer from '../components/views/util/Footer';
 
 const useStyles = makeStyles((theme) => ({
     listContainer: {
@@ -54,7 +55,7 @@ function LandingPage() {
             <ImageTileDisplay/>
             <KeynoteList/>
             <NewsList/>
-
+            <Footer/>
         </div>
         </div>
 

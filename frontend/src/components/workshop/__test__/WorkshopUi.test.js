@@ -15,6 +15,4 @@ import WorkshopCard from '../WorkshopCard';
 
 test('Test Validate Workshop',() => {
   expect(1).toBe(1)
-
-
 })
