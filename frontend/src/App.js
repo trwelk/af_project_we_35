@@ -26,11 +26,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/ddss" component={WorkshopCard} />
           <Route exact path="/news" component={News} />
           <Route exact path="/workshops" component={Workshops} />
-          <Route exact path="/test" component={WorkshopOverview} />
-          <Route exact path="/test1" component={Chart} />
           <Route exact path="/contactUs" component={ContactUs} />
           <Route exact path="/papers" component={CallForPapers} />
 

@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 function ScheduleColumn(props) {
+
+    //*********************************************CONSTANTS************************************************************* */
     const globalState = useSelector((state) => state);
     const startTime = 8
     const noOfHours = 8

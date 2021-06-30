@@ -1,25 +1,9 @@
 const uuid = require('uuid');
 const mongoose = require('mongoose');
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useUnifiedTopology', true);
-mongoose.connect('mongodb://localhost/test');
+const Workshop = require('../models/workshop.model')
 
-var workshopSchema = mongoose.Schema({
-    id: String,
-    title: String,
-    description: String,
-    conductor: String,
-    date: Date,
-    startTime:Number,
-    noOfHours:Number,
-    approved:Boolean,
-    state:String,
-    tags:Array,
-    workshopUrl:String
 
-});
-
- var Workshop = mongoose.model("workshops", workshopSchema); 
+//  var Workshop = mongoose.model("workshops", workshopSchema); 
 
 const addWorkshop =  async obj => {
     var newWorkshop = new Workshop({
@@ -32,7 +16,8 @@ const addWorkshop =  async obj => {
         startTime: obj.startTime,
         noOfHours: obj.noOfHours,
         state:"requested",
-        tags:obj.tags
+        tags:obj.tags,
+        link:obj.link
 
     });
 

@@ -24,15 +24,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Chart(props) {
+  useEffect(() => {
+    fetchWorkshops(dispatch);
+  },[])
+  //*********************************************CONSTANTS************************************************************* */
     const dispatch = useDispatch();
     const globalState = useSelector((state) => state);
     const workshops = globalState.workshop.workshops
     const classes = useStyles();
-
-    useEffect(() => {
-      fetchWorkshops(dispatch);
-    },[])
-
     const declined = workshops ? workshops.filter(res => res.state == AppConstants.STATE_DECLINED).length : null;
     const aproved = workshops ? workshops.filter(res => res.state == AppConstants.STATE_APPROVED).length : null;
     const requested = workshops ? workshops.filter(res => res.state == AppConstants.STATE_REQUESTED).length : null;

@@ -4,9 +4,12 @@ import { fetchWorkshops } from '../../redux/actions/Wokshop.action'
 import WorkshopCard from './WorkshopCard';
 
 function WorkshopList() {
+
     useEffect(() => {
         fetchWorkshops(dispatch);
     }, [])
+    //*********************************************CONSTANTS************************************************************* */
+
     const dispatch = useDispatch();
     const globalState = useSelector((state) => state);
     const workshops = globalState.workshop.workshops

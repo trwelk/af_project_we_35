@@ -35,7 +35,7 @@ async function getNews() {
 
 }
 
-async function getNewsById(News) {
+async function getNewsById(news) {
     filter = { id:news }
     return new Promise((resolve, reject) => {
        newsMongo.findOne(filter, function (err, response) {

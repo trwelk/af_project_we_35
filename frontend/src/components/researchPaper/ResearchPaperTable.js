@@ -6,7 +6,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import { AppConstants } from '../../redux/constants/constants';
-import { updateResearch } from '../../redux/actions/research.action'
+import { updateResearch ,createResearch,deleteResearch } from '../../redux/actions/research.action'
 import { IconButton } from '@material-ui/core';
 import AdminNavbar from '../views/AdminNavBar';
 
@@ -20,6 +20,7 @@ function ResearchPaperTable(props) {
     useEffect(() => {
         fetchResearch(dispatch);
     }, [])
+    //*********************************************CONSTANTS************************************************************* */
     const globalState = useSelector((state) => state);
     const dispatch = useDispatch();
     const researchPapers = globalState.research.researchPapers
@@ -32,7 +33,8 @@ function ResearchPaperTable(props) {
     const { useState } = React;
     const stateLookup = {
         requested: AppConstants.STATE_REQUESTED,
-        approved: AppConstants.STATE_APPROVED
+        approved: AppConstants.STATE_APPROVED,
+        declined: AppConstants.STATE_DECLINED
     }
 
 //*********************************************Setting columns************************************************************* */
@@ -94,31 +96,20 @@ function ResearchPaperTable(props) {
             editable={{
                 onRowAdd: newData =>
                     new Promise((resolve, reject) => {
-                        if (error != null) {
-                            setState({ ...state, open: true, error: error });
-                            reject();
-                        }
-                        else {
+                      
                             setTimeout(() => {
-                                console.log(data)
-                                props.insertCustomer(newData);
+                                updateResearch(newData,dispatch)
                                 resolve();
                             }, 1000)
-                        }
+                        
                     }),
 
                 onRowUpdate: (newData, oldData) =>
                     new Promise((resolve, reject) => {
-                        if (error != null) {
-                            reject();
-                            setState({ ...state, open: true, error: error });
-                        }
-                        else {
                             setTimeout(() => {
                                 updateResearch(dispatch, newData)
                                 resolve();
                             }, 1000)
-                        }
                     }),
             }}
             options={{

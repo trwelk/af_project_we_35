@@ -24,15 +24,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ResearchChart(props) {
+    
+    useEffect(() => {
+        fetchResearch(dispatch);
+    },[])
+  //*********************************************CONSTANTS************************************************************* */
+
     const dispatch = useDispatch();
     const globalState = useSelector((state) => state);
     const researchPapers = globalState.research.researchPapers
     const classes = useStyles();
-
-    useEffect(() => {
-        fetchResearch(dispatch);
-    },[])
-
     const declined = researchPapers ? researchPapers.filter(res => res.state == AppConstants.STATE_DECLINED).length : null;
     const aproved = researchPapers ? researchPapers.filter(res => res.state == AppConstants.STATE_APPROVED).length : null;
     const requested = researchPapers ? researchPapers.filter(res => res.state == AppConstants.STATE_REQUESTED).length : null;

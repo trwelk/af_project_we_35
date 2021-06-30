@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import MaterialTable, { MTableToolbar } from 'material-table'
 import { useDispatch, useSelector } from 'react-redux'
-
-
+import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import WorkshopDescriptionPane from './util/WorkshopDescriptionPane';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
-import { Redirect } from "react-router-dom";
 import AddWorkshopForm from './AddWorkshopForm';
 import { fetchWorkshops, updateWorkshop, deleteWorkshop } from '../../redux/actions/Wokshop.action'
 import AdminNavbar from '../views/AdminNavBar';
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,33 +42,27 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-//-----------------------------------ui elements------------------------------------------------------------------------
 function WorkshopAdminTable(props) {
-    const [state, setState] = React.useState({
-        open: false,
-        vertical: 'bottom',
-        horizontal: 'right',
-    });
-    const { vertical, horizontal, open, error } = state;
-    const classes = useStyles();
+
     useEffect(() => {
         fetchWorkshops(dispatch);
     }, [])
+ //*********************************************CONSTANTS************************************************************* */
+    const [state, setState] = React.useState({open: false, vertical: 'bottom',horizontal: 'right',});
+    const { vertical, horizontal, open, error } = state;
     const dispatch = useDispatch();
     const globalState = useSelector((state) => state);
     const workshops = globalState.workshop.workshops
-
+    const classes = useStyles();
     const addButton = <AddWorkshopForm />
-
-
 
     const data = workshops ? (workshops.map(workshop => ({ ...workshop }))) : (null)
 
     if (workshops) {
         return (
             <div>
-                <AdminNavbar/>
-                <div style={{ padding: "20px",marginTop:"100px" }}>
+                <AdminNavbar />
+                <div style={{ padding: "20px", marginTop: "100px" }}>
                     <div className={classes.buttonCover}>
                         <AddWorkshopForm />
                     </div>
@@ -79,10 +72,7 @@ function WorkshopAdminTable(props) {
                             { title: 'Title', field: 'title' },
                             { title: 'conductor', field: 'conductor' },
                             { title: 'Number of Hours', field: 'noOfHours', type: 'numeric' },
-                            {
-                                title: 'State', field: 'state',
-                                lookup: { requested: 'requested', approved: 'approved', declined: 'declined' }
-                            },
+                            { title: 'State', field: 'state', lookup: { requested: 'requested', approved: 'approved', declined: 'declined' } },
                             { title: 'ID', field: 'id' },
                         ]}
                         options={{
@@ -94,7 +84,6 @@ function WorkshopAdminTable(props) {
                                 color: '#FFF',
                                 borderBottom: '1px solid #333',
                                 width: '100px',
-                                /* height: 100px; */
                                 boxShadow: "0 10px 5px -2px #888"
                             }
                         }}
@@ -114,8 +103,6 @@ function WorkshopAdminTable(props) {
                                         <div>
                                             <WorkshopDescriptionPane workshop={rowData} description={rowData.description} />
                                         </div>
-
-
                                     )
                                 },
                             },
@@ -126,12 +113,17 @@ function WorkshopAdminTable(props) {
                                     return (
                                         <div>
 
-                                            <a
-                                                href={rowData.workshopUrl}
-                                                target="_blank" download>
+                                           
                                                 <IconButton>
+                                                <a
+                                                href={rowData.link}
+                                                target="_blank" download>
                                                     <CloudDownloadIcon />
-                                                </IconButton>download</a>
+                                                    
+                                                    </a>
+                                                </IconButton>
+                                                
+                                               
                                         </div>
 
 

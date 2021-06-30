@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddWorkshopForm() {
     const [open, setOpen] = React.useState(false);
-    const [state, setState] = React.useState({ name: "", title: "", description: "", conductor: "" });
+    const [state, setState] = React.useState({ name: "", title: "", description: "", conductor: "",email:"" ,link:""});
     const [selectedTags, setSelectedTags] = React.useState([]);
     const dispatch = useDispatch();
     const classes = useStyles();
@@ -89,7 +89,7 @@ export default function AddWorkshopForm() {
                 Add workshop
         </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Products</DialogTitle>
+                <DialogTitle id="form-dialog-title">Workshops</DialogTitle>
                 <DialogContent className={classes.dialog}>
                     <DialogContentText>
                         Add Product Details
@@ -109,6 +109,26 @@ export default function AddWorkshopForm() {
                         margin="dense"
                         name="description"
                         label="Description"
+                        type="text"
+                        fullWidth
+                        onChange={handleChange}
+                        className={classes.field}
+                    />
+                     <TextField
+                        autoFocus
+                        margin="dense"
+                        name="Document Link"
+                        label="link"
+                        type="text"
+                        fullWidth
+                        onChange={handleChange}
+                        className={classes.field}
+                    />
+                     <TextField
+                        autoFocus
+                        margin="dense"
+                        name="email"
+                        label="Email"
                         type="text"
                         fullWidth
                         onChange={handleChange}

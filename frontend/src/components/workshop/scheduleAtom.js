@@ -31,6 +31,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+export const allocateSlot = (workshop,stat) => {
+    workshop.startTime = stat.startTime
+    workshop.noOfHours = stat.noOfHours
+    workshop.state = AppConstants.STATE_APPROVED
+    return workshop
+}
+
 export default function scheduleAtom(props) {
     const globalState = useSelector((state) => state);
     const dispatch = useDispatch();
@@ -59,12 +66,15 @@ export default function scheduleAtom(props) {
         setOpen(false);
     };
 
+ 
     const handleSubmit = () => {
-        let workshop  = state.workshop
-        workshop.startTime = state.startTime
+        let workshop  = allocateSlot(state.workshop,state)
+        // let workshop  = state.workshop
+        // workshop.startTime = state.startTime
+        // workshop.noOfHours = state.noOfHours
+        // workshop.state = AppConstants.STATE_APPROVED
         workshop.date = new Date(2021,5,date);
-        workshop.noOfHours = state.noOfHours
-        workshop.state = AppConstants.STATE_APPROVED
+
         updateWorkshop(dispatch, workshop)
     };
 

@@ -69,7 +69,13 @@ function AdminNavbar(props) {
                         <Link className={classes.link} to="/editor/workshops">Workshop Schedule</Link>
                     </Button>
                     <Button color="black">
-                        <Link className={classes.link} to="/editor/dashboard">Conference Overview</Link>
+                        <Link className={classes.link} to="/editor/dashboard">Dashboard</Link>
+                    </Button>
+                    <Button color="black">
+                        <Link className={classes.link} to="/editor/conference">Conference </Link>
+                    </Button>
+                    <Button color="black">
+                        <Link className={classes.link} to="/editor/NewsTable">News</Link>
                     </Button>
                 </Toolbar>
             </AppBar>

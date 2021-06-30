@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ScheduledAtom(props) {
-
+    //*********************************************CONSTANTS************************************************************* */
     const dispatch = useDispatch();
     const classes = useStyles();
     const data = props.data

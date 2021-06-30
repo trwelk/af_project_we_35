@@ -7,6 +7,7 @@ import axios from 'axios'
 // import { createWorkshop } from '../../redux/actions/Wokshop.action';
 import Paper, { Button } from '@material-ui/core';
 import { AppConstants } from '../../redux/constants/constants';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     formCover: {
@@ -56,6 +57,7 @@ export default function ConferenceDetails() {
         setSelectedTags(event.target.value);
     };
 
+    if(state){
     return (
         <div className={classes.formCover}>
 
@@ -112,4 +114,10 @@ export default function ConferenceDetails() {
             </Button>
         </div>
     );
+    }
+    else{
+        return <div>
+            <CircularProgress style={{ marginTop: "200px" }} />
+        </div>
+    }
 }

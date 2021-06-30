@@ -67,7 +67,10 @@ function NavBar(props) {
                         <Link className={classes.link} to="/workshops">Workshops</Link>
                     </Button>
                     <Button color="black">
-                        <Link className={classes.link} to="/about">About</Link>
+                        <Link className={classes.link} to="/contactUs">Contact Us</Link>
+                    </Button>
+                    <Button color="black">
+                        <Link className={classes.link} to="/papers">Research</Link>
                     </Button>
                 </Toolbar>
             </AppBar>

@@ -2,8 +2,6 @@ import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
-import TagFacesIcon from '@material-ui/icons/TagFaces';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchWorkshopTags,fetchWorkshopTagSuccess } from '../../redux/actions/WorkshopTag.action';
 import { fetchWorkshopForTags, } from '../../redux/actions/Wokshop.action';
@@ -31,6 +29,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TagChips(props) {
+
+
+    useEffect(() => {
+        fetchWorkshopTags(dispatch);
+    }, [])
+
+
+//*********************************************CONSTANTS************************************************************* */
     const classes = useStyles();
     const setCategory = props.setCategory
     const [chipData, setChipData] = React.useState([]);
@@ -39,12 +45,9 @@ export default function TagChips(props) {
     const workshopTags = globalState.workshopTag.workshopTags
     // setChipData(workshopTags);
 
-    useEffect(() => {
-        fetchWorkshopTags(dispatch);
-    }, [])
+        //*********************************************EVENT HANDLERS************************************************************* */
 
     const handleClick = (chipToDelete) => () => {
-        // setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
         let newChipData = [];
         workshopTags.forEach((item, index) => {
             let newChip = { ...item, color: "default" };
@@ -58,6 +61,7 @@ export default function TagChips(props) {
         fetchWorkshopForTags(dispatch,chipToDelete)
     };
 
+ //*********************************************Rendering elements************************************************************* */
     return (
         <Paper component="ul" className={classes.root}>
             <div className={classes.chipContainer}>
