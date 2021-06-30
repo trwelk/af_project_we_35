@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import WorkshopCard from './components/workshop/WorkshopCard';
 import Users from './pages/Users';
 import Login from './pages/Login';
+import ResearchRegister from './pages/ResearchRegister';
 import WorkshopManagement from './pages/WorkshopManagement';
 import LandingPage from './pages/LandingPage';
 import Header from './components/views/Header/Header';
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/editor/conference" component={ConferenceAdmin} />
           <Route exact path="/editor/NewsTable" component={NewsTable} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/researcher/register" component={ResearchRegister} />
         </Switch>
       </Router>
     </div>
