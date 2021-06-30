@@ -33,7 +33,6 @@ export const fetchNews = (dispatch) => {
 }
 
 export const updateNews = (dispatch,news) => {
-    console.log(workshop)
     axios.patch(AppConstants.REST_URL_HOST + newsURL,news)
         .then(response => {
             dispatch(updateNewsSuccess({...response.data}))
@@ -89,3 +88,4 @@ export const deleteNews = (dispatch,newsId) => {
                 console.log(error)
             }) 
 }
+

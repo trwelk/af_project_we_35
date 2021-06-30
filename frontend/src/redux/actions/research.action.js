@@ -6,6 +6,16 @@ import { UsbOutlined } from '@material-ui/icons'
 const researchURL = "/researchpapers";
 
 
+export const createResearch = (data,dispatch) => {
+    const research = data;
+    axios.post(AppConstants.REST_URL_HOST + researchURL,Research)
+        .then(response => {
+            const id = response;
+            console.log(id)
+                    dispatch(createResearchSuccess(response.data))
+        })
+
+}
 
 export const fetchResearchSuccess = (data) =>  {
     return {
@@ -73,4 +83,30 @@ export const validateResearchObj = (data) =>  {
    return null;
  }
 
+ 
 
+ export const deleteResearchSuccess = (data) =>  {
+    return {
+        type: ActionTypes.DELETE_RESEARCH_SUCCESS ,
+        payload: data
+    }
+}
+
+
+export const deleteResearch = (dispatch,ResearchId) => {
+        axios.delete(AppConstants.REST_URL_HOST + researchURL + '/' + ResearchId)
+            .then(response => {
+                dispatch(deleteResearchSuccess(ResearchId))
+            })
+            .catch(error => {
+                console.log(error)
+            }) 
+}
+
+
+export const createResearchSuccess = (data) => {
+    return {
+        type: ActionTypes.CREATE_RESEARCH_SUCCESS  ,
+        payload: data
+    }
+}

@@ -3,7 +3,7 @@ import {ActionTypes} from  '../constants/action-types'
 import {AppConstants} from '../constants/constants'
 import {useDispatch, useSelector} from 'react-redux'
 import { UsbOutlined } from '@material-ui/icons'
-const workshopUrl = "/workshops";
+const workshopTagUrl = "/workshoptags";
 
 
 export const fetchWorkshopTagsLoading = (data) =>  {
@@ -24,7 +24,7 @@ export const fetchWorkshopTagSuccess = (data) =>  {
 export const fetchWorkshopTags = (dispatch) => {
     let isLoading = true;
         dispatch(fetchWorkshopTagsLoading(isLoading))
-        axios.get("http://localhost:9090/workshoptags")
+        axios.get(AppConstants.REST_URL_HOST + workshopTagUrl)
             .then(response => {
                 console.log(response.data)
                 dispatch(fetchWorkshopTagSuccess(response.data))
