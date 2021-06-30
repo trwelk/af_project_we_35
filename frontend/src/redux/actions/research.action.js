@@ -8,10 +8,9 @@ const researchURL = "/researchpapers";
 
 export const createResearch = (data,dispatch) => {
     const research = data;
-    axios.post(AppConstants.REST_URL_HOST + researchURL,Research)
+    axios.post(AppConstants.REST_URL_HOST + researchURL,research)
         .then(response => {
             const id = response;
-            console.log(id)
                     dispatch(createResearchSuccess(response.data))
         })
 
@@ -76,8 +75,10 @@ export const validateResearchObj = (data) =>  {
    else if(data.email == null || data.email == ""){
      return "Field Email Cannot be empty"
    }
-   else if(data.id == null || data.id == ""){
-    return "Field id Cannot be empty"
+   else if(data.state == null || data.state == ""){
+    return "Field state Cannot be empty"
+  }else if( !(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(data.email))){
+    return "Field Email is invalid"
   }
    else
    return null;
@@ -105,6 +106,7 @@ export const deleteResearch = (dispatch,ResearchId) => {
 
 
 export const createResearchSuccess = (data) => {
+    console.log(data)
     return {
         type: ActionTypes.CREATE_RESEARCH_SUCCESS  ,
         payload: data

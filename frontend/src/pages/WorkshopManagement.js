@@ -62,6 +62,8 @@ function WorkshopManagement() {
     fetchWorkshops(dispatch);
     axios.get(AppConstants.REST_URL_HOST + '/conference')
     .then(response => {
+      console.log(response)
+
         setState(response.data[0])
 
     })
@@ -71,6 +73,7 @@ function WorkshopManagement() {
   }, [])
 
   const daysArr = state ? state.dates : [14,15]
+  console.log(state)
   const timeColumn = [];
   const headRow = []
 
