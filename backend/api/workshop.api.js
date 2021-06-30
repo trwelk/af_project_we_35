@@ -17,7 +17,10 @@ const addWorkshop =  async obj => {
         noOfHours: obj.noOfHours,
         state:"requested",
         tags:obj.tags,
-        link:obj.link
+        link:obj.link,
+        imageUrl:obj.imageUrl,
+        email:obj.email
+
 
     });
 
