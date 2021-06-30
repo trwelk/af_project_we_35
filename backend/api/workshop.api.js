@@ -1,7 +1,7 @@
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Workshop = require('../models/workshop.model')
-
+const mailApi = require('../api/mail.api');
 
 //  var Workshop = mongoose.model("workshops", workshopSchema); 
 
@@ -77,6 +77,13 @@ async function deleteWorkshop(WorkshopId) {
 
 async function updateWorkshop(workshop) {
     var filter = {'id': workshop.id};
+    const approvedMessage = "Dear Applicant The Workshop Proposal has been approved"
+    const declinedMessage = "Dear Applicant We are sorry to inform you that your Workshop Proposal has been declined"
+    if(research.state == 'approved'){
+        mailApi.sendMail("REQUEST APPROVED",approvedMessage,research.email)
+    }else if (research.state == 'declined'){
+        mailApi.sendMail("REQUEST DECLINED",declinedMessage,research.email)
+    }
     let updatedWorkshop = await Workshop.updateOne(filter, workshop, {new: true,},function(err, doc) {
         if (err) 
             console.log(err)
