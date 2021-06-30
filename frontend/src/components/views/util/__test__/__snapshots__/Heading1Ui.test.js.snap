@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Heading 1 correctly 1`] = `
+<div>
+  <div
+    className="makeStyles-head1container-4"
+  >
+    <h2
+      className="makeStyles-headh2-2"
+    >
+      heading
+    </h2>
+    <span
+      className="makeStyles-headSpan-3"
+    />
+  </div>
+</div>
+`;

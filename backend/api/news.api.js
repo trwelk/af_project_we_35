@@ -49,4 +49,27 @@ async function getNewsById(news) {
 }
 
 
-module.exports = { addNews, getNewsById, getNews };
+async function deleteNews(newsId) {
+    var query = { id: newsId };
+    let news = await newsMongo.deleteOne(query,function(err, obj) {
+        if (err) {
+            console.log("Error deleting")
+        }
+        console.log("1 document deleted");
+      });
+     return news;
+}
+
+async function updateNews(news) {
+    var filter = {'id': news.id};
+  
+    let updatednews = await newsMongo.updateOne(filter, news, {new: true,},function(err, doc) {
+        if (err) 
+            console.log(err)
+    });
+     return news;
+}
+
+
+
+module.exports = { addNews, getNewsById, getNews,deleteNews,updateNews };
