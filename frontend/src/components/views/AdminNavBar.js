@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import { AppBar, Button, IconButton, Toolbar } from '@material-ui/core';
 import { MenuIcon } from '@material-ui/icons'
 import { Typography } from '@material-ui/core';
+import { ActionTypes } from '../../redux/constants/action-types';
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
@@ -36,6 +37,8 @@ function AdminNavbar(props) {
     const classes = useStyles();
     const [navBackground, setNavBackground] = useState('appBarTransparent')
     const navRef = React.useRef()
+    const dispatch = useDispatch();
+
     navRef.current = navBackground
     const globalState = useSelector((state) => state);
     let history = useHistory();
@@ -45,11 +48,22 @@ function AdminNavbar(props) {
        
     } else {
         history.push('/login');
+        dispatch({
+            type: ActionTypes.SUPERUSER_LOGOUT,
+            payload: ""
+          });
 
     }
     useEffect(() => {
         
     })
+    const handleLogout = () => {
+        history.push('/login');
+        dispatch({
+            type: ActionTypes.SUPERUSER_LOGOUT,
+            payload: ""
+          });
+    }
     const text = props.text
     return (
         <div className={classes.root}>
@@ -81,6 +95,9 @@ function AdminNavbar(props) {
                     </Button>
                     <Button color="black">
                         <Link className={classes.link} to="/editor/keynote">Keynotes</Link>
+                    </Button>
+                    <Button color="black" onClick={handleLogout}>
+                        <Link className={classes.link} to="/editor/keynote">logout</Link>
                     </Button>
                 </Toolbar>
             </AppBar>
