@@ -36,7 +36,7 @@ function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function ResearcherForm () {
+function EndUserRegForm () {
     const classes = useStyles();
     const dispatch = useDispatch();
     const [state, setState] = React.useState({ email: "", fName: "", lName: "", institution: "", contact: ""});
@@ -64,7 +64,7 @@ function ResearcherForm () {
     return(
         <Grid>
             <Paper elevation={10} className={classes.paperStyle}>
-                <h2 className={classes.textStyle}><AssignmentIndIcon fontSize="large"/> Researcher Details </h2>
+                <h2 className={classes.textStyle}><AssignmentIndIcon fontSize="large"/> User Details </h2>
                 <TextField name="email" label="Email" placeholder="Enter Email" onChange={handleChange} fullWidth required className={classes.fieldStyle}/>
                 <TextField name="fName" label="First Name" placeholder="Enter First Name" onChange={handleChange} fullWidth required className={classes.fieldStyle}/>
                 <TextField name="lName" label="Last Name" placeholder="Enter Last Name" onChange={handleChange} fullWidth required className={classes.fieldStyle}/>
@@ -88,4 +88,4 @@ function ResearcherForm () {
     );
 }
 
-export default ResearcherForm;
+export default EndUserRegForm;

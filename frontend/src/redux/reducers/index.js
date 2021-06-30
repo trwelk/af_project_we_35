@@ -7,6 +7,7 @@ import { AuthReducer } from './AuthReducer'
 import { ResearchReducer } from './ResearchReducer'
 import { EndUserReducer } from './EndUserReducer'
 import { ResearchPaperReducer } from './ResearchPaperReducer'
+import { WorkshopPropReducer } from './WorkshopPropReducer'
 
  const reducer = combineReducers({
     workshop:WorkshopReducer,
@@ -16,7 +17,8 @@ import { ResearchPaperReducer } from './ResearchPaperReducer'
     auth: AuthReducer,
     enduser: EndUserReducer,
     research:ResearchReducer,
-    researchPaper: ResearchPaperReducer
+    researchPaper: ResearchPaperReducer,
+    workshopProp: WorkshopPropReducer
 })
 
 export default reducer
